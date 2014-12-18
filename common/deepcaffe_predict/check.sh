@@ -1,0 +1,1 @@
+qsub -pe localslots 2 -e /net/per610a/export/das11f/plsang/codes/common/deepcaffe_predict/error.log -o /net/per610a/export/das11f/plsang/codes/common/deepcaffe_predict/output.log /net/per610a/export/das11f/plsang/codes/common/deepcaffe_predict.sh youtube2text 2 3

@@ -1,0 +1,33 @@
+Mon Sep 29 19:19:34 JST 2014
+[bc313.hpc.vpl.nii.ac.jp] [1223727] [python deepcaffe_predict.py youtube2text 2 3]
+/net/per610a/export/das11f/plsang/codes/common
+Extracted deep caffe feature for [vid1002-000001] in 2.54719305038 s.
+Extracted deep caffe feature for [vid1002-000002] in 2.49532985687 s.
+Extracted deep caffe feature for [vid1002-000003] in 2.50356912613 s.
+Extracted deep caffe feature for [vid1002-000004] in 2.51206207275 s.
+Extracted deep caffe feature for [vid1002-000005] in 2.49083995819 s.
+Extracted deep caffe feature for [vid1002-000006] in 2.54906797409 s.
+Extracted deep caffe feature for [vid1002-000007] in 2.57492780685 s.
+Extracted deep caffe feature for [vid1002-000008] in 2.7302801609 s.
+Extracted deep caffe feature for [vid1002-000009] in 2.66180610657 s.
+Extracted deep caffe feature for [vid1002-000010] in 2.67288398743 s.
+Extracted deep caffe feature for [vid1002-000011] in 2.66068887711 s.
+Extracted deep caffe feature for [vid1002-000012] in 2.67694592476 s.
+Extracted deep caffe feature for [vid1002-000013] in 2.61062097549 s.
+Extracted deep caffe feature for [vid1002-000014] in 2.65513396263 s.
+Extracted deep caffe feature for [vid1002-000015] in 2.61283802986 s.
+Extracted deep caffe feature for [vid1002-000016] in 2.5841550827 s.
+Extracted deep caffe feature for [vid1002-000017] in 2.65740990639 s.
+Extracted deep caffe feature for [vid1002-000018] in 2.60692095757 s.
+Extracted deep caffe feature for [vid1002-000019] in 2.64909791946 s.
+Extracted deep caffe feature for [vid1002-000020] in 2.46050596237 s.
+Extracted deep caffe feature for [vid1002-000021] in 2.49624896049 s.
+Extracted deep caffe feature for [vid1002-000022] in 2.52980709076 s.
+Extracted deep caffe feature for [vid1002-000023] in 2.67505598068 s.
+Extracted deep caffe feature for [vid1002-000024] in 2.80364918709 s.
+Extracted deep caffe feature for [vid1002-000025] in 2.88148903847 s.
+Extracted deep caffe feature for [vid1002-000026] in 2.82622289658 s.
+Extracted deep caffe feature for [vid1002-000027] in 2.77772784233 s.
+Extracted deep caffe feature for [vid1002-000028] in 2.78005695343 s.
+Extracted deep caffe feature for [vid1002-000029] in 3.03290915489 s.
+Mon Sep 29 19:21:08 JST 2014
