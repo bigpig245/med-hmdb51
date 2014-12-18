@@ -1,0 +1,615 @@
+@@@ Working on video 291 out of 4293 videos in total
+ffmpeg -i /net/sfv215/export/raid4/ledduy/trecvid-med-2011/devel/MED11-DEV-T1/HVC761256.mp4
+something wrong with file HVC761256.mp4
+ffmpeg version 0.8.4, Copyright (c) 2000-2011 the FFmpeg developers
+  built on Sep 27 2011 20:46:46 with gcc 4.1.2 20080704 (Red Hat 4.1.2-48)
+  configuration: --prefix=/home/plsang/usr/local --enable-shared
+  libavutil    51.  9. 1 / 51.  9. 1
+  libavcodec   53.  7. 0 / 53.  7. 0
+  libavformat  53.  4. 0 / 53.  4. 0
+  libavdevice  53.  1. 1 / 53.  1. 1
+  libavfilter   2. 23. 0 /  2. 23. 0
+  libswscale    2.  0. 0 /  2.  0. 0
+[aac @ 0x16474b60] channel element 0.0 is not allocated
+[aac @ 0x16474b60] channel element 0.2 is not allocated
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 0.2 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.11 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] channel element 2.4 is not allocated
+[aac @ 0x16474b60] channel element 2.0 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 0.5 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.8 is not allocated
+[aac @ 0x16474b60] channel element 0.11 is not allocated
+[aac @ 0x16474b60] channel element 3.0 is not allocated
+[aac @ 0x16474b60] channel element 2.5 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.4 is not allocated
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[aac @ 0x16474b60] channel element 2.6 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] channel element 0.12 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.14 is not allocated
+[aac @ 0x16474b60] channel element 3.10 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.5 is not allocated
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] channel element 3.11 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] channel element 3.1 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] ms_present = 3 is reserved.
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.9 is not allocated
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] channel element 2.15 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.15 is not allocated
+[aac @ 0x16474b60] channel element 2.9 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.5 is not allocated
+[aac @ 0x16474b60] channel element 3.0 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 0.0 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 2.11 is not allocated
+[aac @ 0x16474b60] channel element 0.3 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] ms_present = 3 is reserved.
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[aac @ 0x16474b60] channel element 3.7 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.14 is not allocated
+[aac @ 0x16474b60] channel element 3.4 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.1 is not allocated
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] invalid band type
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 2.4 is not allocated
+[aac @ 0x16474b60] channel element 2.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.7 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.13 is not allocated
+[aac @ 0x16474b60] channel element 2.6 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Prediction is not allowed in AAC-LC.
+[aac @ 0x16474b60] channel element 0.0 is not allocated
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.6 is not allocated
+[aac @ 0x16474b60] channel element 3.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.9 is not allocated
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] channel element 3.14 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Number of bands (10) exceeds limit (7).
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.5 is not allocated
+[aac @ 0x16474b60] channel element 2.0 is not allocated
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] Number of scalefactor bands in group (50) exceeds limit (49).
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.0 is not allocated
+[aac @ 0x16474b60] channel element 0.5 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.8 is not allocated
+[aac @ 0x16474b60] channel element 2.5 is not allocated
+[aac @ 0x16474b60] channel element 2.9 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.8 is not allocated
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] Prediction is not allowed in AAC-LC.
+[aac @ 0x16474b60] channel element 3.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Prediction is not allowed in AAC-LC.
+[aac @ 0x16474b60] channel element 0.7 is not allocated
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.15 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 3.14 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] channel element 2.11 is not allocated
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.2 is not allocated
+[aac @ 0x16474b60] channel element 0.7 is not allocated
+[aac @ 0x16474b60] channel element 3.2 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Number of bands (8) exceeds limit (7).
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 3.2 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.1 is not allocated
+[aac @ 0x16474b60] Number of bands (21) exceeds limit (16).
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 0.14 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] channel element 0.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[aac @ 0x16474b60] channel element 2.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.0 is not allocated
+[aac @ 0x16474b60] channel element 0.8 is not allocated
+[aac @ 0x16474b60] channel element 0.0 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.10 is not allocated
+[aac @ 0x16474b60] channel element 2.3 is not allocated
+[aac @ 0x16474b60] channel element 0.4 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.1 is not allocated
+[aac @ 0x16474b60] channel element 2.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.8 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] channel element 3.12 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.14 is not allocated
+[aac @ 0x16474b60] channel element 0.0 is not allocated
+[aac @ 0x16474b60] channel element 0.12 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] channel element 2.15 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.15 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 2.7 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Prediction is not allowed in AAC-LC.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 2.7 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.7 is not allocated
+[aac @ 0x16474b60] channel element 2.3 is not allocated
+[aac @ 0x16474b60] channel element 2.5 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.10 is not allocated
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] channel element 0.1 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] Number of scalefactor bands in group (54) exceeds limit (49).
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Number of bands (34) exceeds limit (19).
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 3.2 is not allocated
+[aac @ 0x16474b60] channel element 3.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 0.12 is not allocated
+[aac @ 0x16474b60] channel element 2.10 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.6 is not allocated
+[aac @ 0x16474b60] channel element 3.9 is not allocated
+[aac @ 0x16474b60] channel element 2.4 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Number of scalefactor bands in group (56) exceeds limit (49).
+[aac @ 0x16474b60] channel element 2.0 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 2.13 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.3 is not allocated
+[aac @ 0x16474b60] channel element 3.2 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.11 is not allocated
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 0.5 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Number of scalefactor bands in group (50) exceeds limit (49).
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.6 is not allocated
+[aac @ 0x16474b60] channel element 3.11 is not allocated
+[aac @ 0x16474b60] channel element 2.7 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.9 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.2 is not allocated
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Number of bands (30) exceeds limit (25).
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[aac @ 0x16474b60] channel element 3.12 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 3.1 is not allocated
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] channel element 0.8 is not allocated
+[aac @ 0x16474b60] channel element 2.9 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] channel element 2.4 is not allocated
+[aac @ 0x16474b60] channel element 2.9 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] SBR was found before the first channel element.
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] channel element 2.5 is not allocated
+[aac @ 0x16474b60] channel element 3.8 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Prediction is not allowed in AAC-LC.
+[aac @ 0x16474b60] Number of scalefactor bands in group (15) exceeds limit (14).
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.11 is not allocated
+[aac @ 0x16474b60] Reserved bit set.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Reserved bit set.
+    Last message repeated 1 times
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 3.1 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Number of bands (58) exceeds limit (46).
+[aac @ 0x16474b60] channel element 0.3 is not allocated
+[aac @ 0x16474b60] channel element 3.8 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.10 is not allocated
+[aac @ 0x16474b60] channel element 0.2 is not allocated
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 0.3 is not allocated
+[aac @ 0x16474b60] channel element 3.13 is not allocated
+[aac @ 0x16474b60] channel element 0.4 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] ms_present = 3 is reserved.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 2.3 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] Number of bands (6) exceeds limit (3).
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Input buffer exhausted before END element found
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[aac @ 0x16474b60] channel element 2.8 is not allocated
+[aac @ 0x16474b60] Sample rate index in program config element does not match the sample rate index configured by the container.
+[aac @ 0x16474b60] Not evaluating a further program_config_element as this construct is dubious at best.
+[aac @ 0x16474b60] channel element 3.10 is not allocated
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[h264 @ 0x16476fa0] AVC: nal size 0
+[h264 @ 0x16476fa0] no frame!
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0x16472400] max_analyze_duration 5000000 reached at 5015510
+
+Seems stream 1 codec frame rate differs from container frame rate: 60000.00 (60000/1) -> 29.97 (30000/1001)
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/net/sfv215/export/raid4/ledduy/trecvid-med-2011/devel/MED11-DEV-T1/HVC761256.mp4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isomavc1mp423gp5
+    creation_time   : 2009-06-24 06:51:18
+  Duration: 00:05:36.66, start: 0.000000, bitrate: 728 kb/s
+    Stream #0.0(und): Audio: aac, 44100 Hz, stereo, s16, 125 kb/s
+    Metadata:
+      creation_time   : 2009-06-24 06:51:18
+    Stream #0.1(und): Video: h264, 599 kb/s, PAR 327:320 DAR 0:0, 29.97 fps, 29.97 tbr, 30k tbn, 60k tbc
+    Metadata:
+      creation_time   : 2009-06-24 06:51:18
+    Stream #0.2(und): Data: mp4s / 0x7334706D, 0 kb/s
+    Metadata:
+      creation_time   : 2009-06-24 06:51:18
+    Stream #0.3(und): Data: mp4s / 0x7334706D, 0 kb/s
+    Metadata:
+      creation_time   : 2009-06-24 06:51:18
+At least one output file must be specified
