@@ -1,0 +1,74 @@
+// setup root password
+sudo passwd root
+
+// install matlab
+B1: Cài đặt JDK lại không sử dụng OpenJDK mặc định
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+Setting up Environment variables
+sudo apt-get install oracle-java7-set-default
+B2: Mount vào ổ đĩa từ Iso File
+B3: sudo apt-get install libxtst6:i386 libXext6:i386 libxi6:i386 libncurses5:i386 libxt6:i386 libxpm4:i386 libxmu6:i386 libxp6:i386
+B3: sudo /media/tiendv/MATHWORKS_R2012A/install -glnx86 -v
+
+sudo /home/ntrang/Matlab/install -glnx86 -v
+
+// mount iso file
+sudo mount -o loop ~/Downloads/Matlab801_MacUnix.iso ~/Matlab/
+sudo mount -o loop "path to Matlab.iso" "destination folder"
+
+// delete lock file;
+rm /var/lib/dpkg/lock; dpkg --configure -a
+
+// create symbolic link
+sudo ln -sf [target link] [symbolic link]
+
+// xem package đã cài đặt nằm ở đâu trong os
+whereis [tên package cần xem]
+
+// run ffmpeg from matlab 
+Tình trạng:
+	- Trên console khi chạy câu lệnh của ffmpeg thì vẫn hiển thị bình thường nhưng khi gọi cùng câu lệnh đó từ matlab thì trả về empty
+	- Thông thường ở console thường báo lỗi [glibcxx_3.4.15' not found], đôi khi thì không.
+Cách sửa:
+	- Tạo 1 symbolic link trong thư mục [/usr/local/MATLAB/R2013a/sys/os/glnxa64]
+		sudo ln -sf /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.20 libstdc++.so.6
+	- Nếu link đã tồn tại rồi thì xem thử xem đã trỏ tới đúng [libstdc] trong [usr/lib] chứ không phải trong thư mục cùng tên.
+
+// Bị black screen khi vào bằng vmware
+Tình trạng: 
+	- Mở ubuntu lên bằng vmware màn hình nó đen thui không thấy gì hết trơn, không thao tác được gì hết trơn hết.
+Cách sửa: 
+	- Vào tùy chỉnh của vmware, tắt chế độ 3D trong phần display (Lưu ý: phải tắt os trước nha, thiết lập sau được chứ không cần phải cài lại os ảo đâu ha >_<)
+
+// Bị blank screen khi login vào bằng vmware
+Tình trạng:
+	- Vào vmware mà màn hình nó đỏ lè (background default của ubuntu, không phải là đen thui na)
+	- Vẫn bấm Ctr + Alt + T thao tác command line bình thường, nhưng khi gõ [sudo apt-get update] thì nó lại báo lỗi [glibcxx_3.4.15' not found] thế mới đau chứ >_<
+Nguyên nhân (theo mình phán đoán -_-):
+	- Tối qua trong lúc tạo symbolic cho libstdc loạn xạ ngầu có lẽ đã tạo nhầm symbolic link cho cái default trong usr/lib trỏ về thư mục của matlab nên xảy ra tình trạng thế.
+Các sửa:
+	- Tạo lại 2 symbolic link [libstdc++.so.6] trong /usr/lib và matlab đều trỏ tới usr/lib hết!
+
+// Make improve trajectory bị lỗi
+g++ -Wall -o release/DenseTrackStab .build_release/DenseTrackStab.o -I /usr/include/ $(pkg-config --cflags --libs opencv)
+
+
+// install ffmpeg
+sudo apt-get -y install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libx11-dev libxext-dev libxfixes-dev pkg-config texi2html zlib1g-dev
+
+PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure --prefix="$HOME/ffmpeg_build" --extra-cflags="-I$HOME/ffmpeg_build/include" --extra-ldflags="-L$HOME/ffmpeg_build/lib" --bindir="$HOME/bin" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab PATH="$HOME/bin:$PATH" make
+
+// Để xem thông tin video (image size, bitrate, length...)
+Cài nautilus-columns, không phải nautilus (_._")
+	sudo add-apt-repository ppa:nilarimogard/webupd8
+	sudo apt-get update
+	sudo apt-get install nautilus-columns
+	nautilus -q
+
+// Để đọc được video bằng opencv
+http://jayrambhia.wordpress.com/2012/06/20/install-opencv-2-4-in-ubuntu-12-04-precise-pangolin/
+ở bước cài v4l thiếu gọi lệnh ./configure trước khi make
+
+
