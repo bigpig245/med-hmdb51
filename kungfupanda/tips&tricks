@@ -72,3 +72,14 @@ http://jayrambhia.wordpress.com/2012/06/20/install-opencv-2-4-in-ubuntu-12-04-pr
 ở bước cài v4l thiếu gọi lệnh ./configure trước khi make
 
 // enceval-toolkit-1.1
+
+// Để hiển thị remote desktop ở chế độ fullscreen khi remote tới màn hình có độ phân giải khác độ phân giải của máy thì chọn lúc start mstsc
+
+// Lỗi ffmpeg: error while loading shared libraries: libavdevice.so.56: cannot open shared object file: No such file or directory
+Lỗi này do config chưa ăn thì phải.
+- Đầu tiên, thử tìm xem lib đó đã được cài chưa và cài vào đâu
+	# find / -name libavdevice.so.56
+- Tiếp theo đó mở file /etc/ld.so.conf.d/libc.conf xem trong này đã có chưa thư mục mà đã được tìm thấy ở trên chưa, nếu chưa có thì thêm vào... có ròi thì thôi =))
+- Chạy lệnh [# ldconfig], [sudo ldconfig], [ldconfig] gì gì đó xong chạy lại là okie :sure:
+
+

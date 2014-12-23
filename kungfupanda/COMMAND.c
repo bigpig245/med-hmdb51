@@ -13,9 +13,9 @@ Có 3 bộ descriptor được định nghĩa: hoghof, mbh, hoghofmbh
 	densetraj_select_features('mbh');
 	densetraj_select_features('hoghofmbh');
 	matlabpool close;
-	do_clustering_gmm('/home/ntrang/projects/output/hmdb51','idensetraj.hoghof', 128);
-	do_clustering_gmm('/home/ntrang/projects/output/hmdb51','idensetraj.mbh', 128);
-	do_clustering_gmm('/home/ntrang/projects/output/hmdb51','idensetraj.hoghofmbh', 128);
+	do_clustering_gmm('/home/ntrang/project/output/hmdb51','idensetraj.hoghof', 128);
+	do_clustering_gmm('/home/ntrang/project/output/hmdb51','idensetraj.mbh', 128);
+	do_clustering_gmm('/home/ntrang/project/output/hmdb51','idensetraj.hoghofmbh', 128);
 
 Hiện tại không chạy được code của improve_dense_trajectory nên phải chạy code của dense_trajectory_v1.2
 // Gen local scripts
@@ -26,6 +26,7 @@ cm_gen_local_scripts('sift_encode_bow', '''hmdb51'', ''video-bg'', ''covdet'', '
 
 cm_gen_local_scripts('sift_encode_fc_home_ldc', '''hmdb51'', ''video-bg'', ''covdet'', ''hessian'', ''LDC2012E26'', %d, %d', 98118, 16)
 
+// Hình như lờ các cờ nhíp trong dataset này hem có âm thanh nên hem xài cái ni dc.
 cm_gen_local_scripts('mfcc_encode_home_2014', '''video-bg'', ''rastamat'', %d, %d', 100000, 10)
 
 cm_gen_local_scripts('densetraj_encode_sge', '''vsd2014'', ''keyframe-5'', %d, %d', 46058, 20)
@@ -58,7 +59,7 @@ sift_encode_fc_home( 'hmdb51', 'video-bg', 'phow', 'gray', 256, 128) // Cái nà
 Không hỉu trích xuất có bị sai hay không mà hiện tại ma trận xuất ra có vẻ không giống với lệnh :'(
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Trích xuất đặc trưng âm thanh
-Hình như lờ các cờ nhíp trong dataset này hem có âm thanh nên hem xài cái ni dc.
+//Hình như lờ các cờ nhíp trong dataset này hem có âm thanh nên hem xài cái ni dc.
 matlabpool open 5;mfcc_select_features('rastamat');matlabpool close;do_clustering_gmm('/home/ntrang/projects/tvmed14-tvmed14.2.2','mfcc.bg.rastamat.v14.1');
 
 // Vào vấn đề chính
