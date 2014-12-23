@@ -13,7 +13,7 @@ function sift_select_features( sift_algo, param, version, ldc_pat )
     end
     
     if ~exist('ldc_pat', 'var'),
-        ldc_pat = '01_test';
+        ldc_pat = 'brush_hair';
     end
 	
     max_features = 1000000;
@@ -34,7 +34,7 @@ function sift_select_features( sift_algo, param, version, ldc_pat )
 	%metadata = metadata_.metadata;
 	
     %kf_dir = '/net/per610a/export/das11f/plsang/trecvidmed13/keyframes';
-    kf_dir = '/home/ntrang/projects/dataset/keyframes';
+    kf_dir = '/home/ntrang/project/output/keyframes';
 	
 	%fprintf('Loading metadata...\n');
 	%medmd_file = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/medmd.mat';
@@ -47,7 +47,9 @@ function sift_select_features( sift_algo, param, version, ldc_pat )
 	%rand_index = randperm(length(list_video));
 	%selected_index = rand_index(1:num_selected_videos);
     %selected_videos = list_video(selected_index);
-    video_dir = '/home/ntrang/projects/dataset/hmdb51/01_test';
+    configs = set_global_config();
+    db_dir = configs.db_dir;
+    video_dir = sprintf('%s/%s', db_dir, ldc_pat);
 	selected_videos = dir(video_dir);
 	
 	%max_features_per_video = ceil(ensure_coef * max_features/length(selected_videos));
@@ -57,7 +59,7 @@ function sift_select_features( sift_algo, param, version, ldc_pat )
 
 	%output_file = sprintf('/net/per610a/export/das11f/plsang/trecvidmed13/feature/bow.codebook.devel/%s.%s.sift/data/selected_feats_%d.mat', sift_algo, num2str(param), max_features);
 	%output_file = sprintf('/net/per610a/export/das11f/plsang/trecvidmed13/feature/bow.codebook.devel/%s.%s.%s.sift/data/selected_feats_%d.mat', sift_algo, num2str(param), version, max_features);
-    output_file = sprintf('/home/ntrang/projects/output/hmdb51/feature/bow.codebook.devel/%s.%s.%s.sift/data/selected_feats_%d.mat', sift_algo, num2str(param), version, max_features);
+    output_file = sprintf('/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/%s.%s.%s.sift/data/selected_feats_%s_%d.mat', sift_algo, num2str(param), version, ldc_pat, max_features);
 	if exist(output_file),
 		fprintf('File [%s] already exist. Skipped\n', output_file);
 		return;
@@ -100,7 +102,7 @@ function sift_select_features( sift_algo, param, version, ldc_pat )
             numbers_of_points = size(descrs, 2);
             if isempty(descrs) || count_zero_points > 0.5*numbers_of_points,
                 warning('Maybe blank image...[%s]. Skipped!\n', img_name);
-                continue;
+                %continue;
             end
 			%feat = [feat descrs];
             feat = [feat descrs];

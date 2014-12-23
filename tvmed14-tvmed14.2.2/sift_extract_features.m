@@ -50,16 +50,16 @@ function [frames, descrs] = sift_extract_features( img_path, sift_algo, param )
             im = imread(img_path);
             [frames, descrs] = vl_phow(im2single(im), 'Color', color);
 
-            %if ~isempty(descrs),
-                %sift = double(descrs);
+            if ~isempty(descrs),
+                sift = double(descrs);
                 %descrs = single(sqrt(sift./repmat(sum(sift), 128, 1)));
-                %divide = repmat(sum(sift), 128, 1);
-                %descrs = single(sqrt(sift/divide));
-
-                %if any(isnan(descrs(:))),
-                %    error ('Image feature of file <%s> contains NaN\n', img_path);
-                %end
-            %end
+                divide = repmat(sum(sift), 128, 1);
+                descrs = single(sqrt(sift/divide));
+                
+                if any(isnan(descrs(:))),
+                    error ('Image feature of file <%s> contains NaN\n', img_path);
+                end
+            end
 			
 			%catch
 			%	frames = [];

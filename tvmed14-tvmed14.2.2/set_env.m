@@ -4,34 +4,34 @@
 
 % vlfeat
 % run('/net/per900a/raid0/plsang/tools/vlfeat-0.9.16/toolbox/vl_setup');
-run('/home/ntrang/projects/tools/vlfeat-0.9.19-bin/vlfeat-0.9.19/toolbox/vl_setup');
+run('/home/ntrang/project/tools/vlfeat-0.9.19-bin/vlfeat-0.9.19/toolbox/vl_setup');
 
 % libsvm
 % addpath('/net/per900a/raid0/plsang/tools/libsvm-3.12/matlab');
-addpath('/home/ntrang/projects/tools/libsvm-3.18/matlab');
+addpath('/home/ntrang/project/tools/libsvm-3.18/matlab');
 
 % common
 % addpath('/net/per610a/export/das11f/plsang/codes/common');
-addpath('/home/ntrang/projects/common');
+addpath('/home/ntrang/project/common');
 
 % mfcc - kmail
 % addpath('/net/per900a/raid0/plsang/tools/mfcc-kamil');
-addpath('/home/ntrang/projects/tools/mfcc/mfcc');
+addpath('/home/ntrang/project/tools/mfcc/mfcc');
 
 % voicebox
 % addpath('/net/per900a/raid0/plsang/tools/voicebox');
-addpath('/home/ntrang/projects/tools/voicebox');
+addpath('/home/ntrang/project/tools/voicebox');
 
 % rastamat
 % addpath('/net/per900a/raid0/plsang/software/rastamat');
-addpath('/home/ntrang/projects/tools/rastamat');
+addpath('/home/ntrang/projects/tool/rastamat');
 
 % lib gmm-fisher
 % addpath('/net/per900a/raid0/plsang/tools/gmm-fisher-kaori/matlab');
-% addpath('/net/per900a/raid0/plsang/tools/gmm-fisher-kaori/matlab');
+addpath('/home/ntrang/project/tools/gmm-fisher/matlab');
 
 % gist descriptor
 % addpath('/net/per900a/raid0/plsang/software/gistdescriptor');
-addpath('/home/ntrang/projects/tools/gistdescriptor');
+addpath('/home/ntrang/projects/tool/gistdescriptor');
 
 %featpipem_addpaths

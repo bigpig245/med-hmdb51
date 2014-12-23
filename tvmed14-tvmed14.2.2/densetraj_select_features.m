@@ -1,4 +1,4 @@
-function [ feats ] = densetraj_select_features( descriptor, max_features )
+function [ feats ] = densetraj_select_features( descriptor, ldc_pat, max_features )
 %SELECT_FEATURES Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -7,8 +7,11 @@ function [ feats ] = densetraj_select_features( descriptor, max_features )
     % parameters
 	if ~exist('max_features', 'var'),
 		max_features = 1000000;
-	end
+    end
 	
+    if ~exist('ldc_pat', 'var'),
+        ldc_pat = 'brush_hair';
+    end
 	%% event_set = 1: 10ex, 2:100Ex, 3: 130Ex
 	configs = set_global_config();
 	logfile = sprintf('%s/%s.log', configs.logdir, mfilename);
@@ -17,14 +20,14 @@ function [ feats ] = densetraj_select_features( descriptor, max_features )
 	
 	tic;
 	
-    video_sampling_rate = 1;
+    %video_sampling_rate = 1;
 	sample_length = 120; % frames
-	ensure_coef = 1.1;
+	%ensure_coef = 1.1;
 	
 	 %% TODO: using unified metadata
 	% f_metadata = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/common/metadata_devel.mat';
     %f_metadata = '/home/ntrang/projects/output/hmdb51_2014_brush_hair.info.mat';
-    f_metadata = '/home/ntrang/projects/output/hmdb51_2014_01_test.info.mat';
+    f_metadata = sprintf('/home/ntrang/project/output/hmdb51_%s.info.mat', ldc_pat);
     
 	fprintf('Loading metadata...\n');
 	%metadata_ = load(f_metadata, 'metadata');
@@ -33,12 +36,12 @@ function [ feats ] = densetraj_select_features( descriptor, max_features )
     metadata = metadata_.metadata;
 	
     % video_dir = '/net/per610a/export/das11f/plsang/dataset/MED2013/LDCDIST-RSZ';
-    video_dir = '/home/ntrang/projects/dataset/hmdb51/01_test';
+    video_dir = sprintf('/home/ntrang/project/dataset/hmdb51/%s', ldc_pat);
 		
 	fprintf('Loading metadata...\n');
 	% medmd_file = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/medmd.mat';
-    medmd_file = '/home/ntrang/projects/output/hmdb51_2014_01_test.info.mat';
-	load(medmd_file, 'MEDMD'); 
+    %medmd_file = '/home/ntrang/projects/output/hmdb51_2014_01_test.info.mat';
+	%load(medmd_file, 'MEDMD'); 
 	
 	%clips = MEDMD.EventBG.default.clips;
 	%list_video = unique(clips);	% 4992 clips
@@ -101,7 +104,7 @@ function [ feats ] = densetraj_select_features( descriptor, max_features )
     end
 
 	% output_file = sprintf('/net/per610a/export/das11f/plsang/trecvidmed13/feature/bow.codebook.devel/idensetraj.%s/data/selected_feats_%d.mat', descriptor, max_features);
-    output_file = sprintf('/home/ntrang/projects/output/hmdb51/feature/bow.codebook.devel/idensetraj.%s/data/selected_feats_%d.mat', descriptor, max_features);
+    output_file = sprintf('/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/idensetraj.%s/data/selected_feats_%s_%d.mat', descriptor, ldc_pat, max_features);
 	output_dir = fileparts(output_file);
 	if ~exist(output_dir, 'file'),
 		cmd = sprintf('mkdir -p %s', output_dir);

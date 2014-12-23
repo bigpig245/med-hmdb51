@@ -12,9 +12,9 @@ function [ X ] = densetraj_extract_features( video_file, descriptor, start_frame
 	
     %densetraj = '/net/per900a/raid0/plsang/tools/dense_trajectory_release/release/DenseTrack';
 	%densetraj = 'LD_PRELOAD=/net/per900a/raid0/plsang/usr.local/lib/libstdc++.so /net/per900a/raid0/plsang/tools/improved_trajectory_release/release/DenseTrackStab_HOGHOFMBH';
-    %densetraj = 'LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 /home/ntrang/projects/tools/improved_trajectory_release/release/DenseTrackStab';
+    %densetraj = 'LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 /home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
     % Cannot run improve_trajectory, so I use dense_trajectory v1.2
-    densetraj = 'LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 /home/ntrang/projects/tools/dense_trajectory_release_v1.2/release/DenseTrack';
+    densetraj = 'LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 /home/ntrang/project/tools/dense_trajectory_release_v1.2/release/DenseTrack';
     
     % Set up the mpeg audio decode command as a readable stream
 
