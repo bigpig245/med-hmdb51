@@ -51,8 +51,8 @@ matlabpool open;
 sift_select_features('phow', 'gray'); // Trích xuất đặc trưng
 matlabpool close;
 // training codebook cho đặc trưng
-do_clustering_gmm('/home/ntrang/projects/output/hmdb51','phow.gray.v14.2.sift'); // Không lưu file proj
-do_clustering_gmm('/home/ntrang/projects/output/hmdb51','phow.gray.v14.2.sift', 128); // Lưu file lowproj
+do_clustering_gmm('/home/ntrang/project/output/hmdb51','phow.gray.v14.2.sift'); // Không lưu file proj
+do_clustering_gmm('/home/ntrang/project/output/hmdb51','phow.gray.v14.2.sift', 128); // Lưu file lowproj
 toc;
 sift_encode_fc_home( 'hmdb51', 'video-bg', 'phow', 'gray', 256, 128) // Cái này dành riêng cho sift;
 
@@ -60,12 +60,15 @@ Không hỉu trích xuất có bị sai hay không mà hiện tại ma trận xu
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Trích xuất đặc trưng âm thanh
 //Hình như lờ các cờ nhíp trong dataset này hem có âm thanh nên hem xài cái ni dc.
-matlabpool open 5;mfcc_select_features('rastamat');matlabpool close;do_clustering_gmm('/home/ntrang/projects/tvmed14-tvmed14.2.2','mfcc.bg.rastamat.v14.1');
+matlabpool open 5;mfcc_select_features('rastamat');matlabpool close;do_clustering_gmm('/home/ntrang/project/tvmed14-tvmed14.2.2','mfcc.bg.rastamat.v14.1');
+
+// Tạo file database
+Chạy method calker_create_basic_exp để tạo file database, file này chứa gì chịu -_-, đang si nghĩ
 
 // Vào vấn đề chính
-calker_main('hmdb51', 'video-bg', 'idensetraj.mbh', '', '01_test', 'feat_dim', 'ker_type', 'cross');, '--hmdb51-v1.1', 'pool', 5);
+calker_main('hmdb51', 'video-bg', 'idensetraj.mbh', '', 'brush_hair', 'feat_dim', 'ker_type', 'cross');, '--hmdb51-v1.1', 'pool', 5);
 calker_main(proj_name, exp_id, feature_ext, suffix, test_pat, feat_dim, ker_type, cross, open_pool)
-
+calker_main('hmdb51', 'brush_hair', 'feat_dim', 'cross', ''); // cái này mới đúng chuẩn nè
 
 
 

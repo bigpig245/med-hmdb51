@@ -27,7 +27,7 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, ldc_pat, num_f
     end
     
     if ~exist('ldc_pat', 'var'),
-        ldc_pad = 'brush_hair';
+        ldc_pat = 'training';
     end
 	
 	f_selected_feats = sprintf('%s/feature/bow.codebook.devel/%s/data/selected_feats_%s_%d.mat', ...

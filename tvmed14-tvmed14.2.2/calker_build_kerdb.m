@@ -38,5 +38,5 @@ ker.startG = -12;
 ker.endG = 3;
 ker.stepG = 1;
 
-ker.proj_dir = '/net/per610a/export/das11f/plsang';
+ker.proj_dir = '/home/ntrang/project';
 end

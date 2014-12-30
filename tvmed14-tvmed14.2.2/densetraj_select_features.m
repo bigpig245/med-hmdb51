@@ -10,7 +10,7 @@ function [ feats ] = densetraj_select_features( descriptor, ldc_pat, max_feature
     end
 	
     if ~exist('ldc_pat', 'var'),
-        ldc_pat = 'brush_hair';
+        ldc_pat = 'training';
     end
 	%% event_set = 1: 10ex, 2:100Ex, 3: 130Ex
 	configs = set_global_config();
@@ -27,18 +27,18 @@ function [ feats ] = densetraj_select_features( descriptor, ldc_pat, max_feature
 	 %% TODO: using unified metadata
 	% f_metadata = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/common/metadata_devel.mat';
     %f_metadata = '/home/ntrang/projects/output/hmdb51_2014_brush_hair.info.mat';
-    f_metadata = sprintf('/home/ntrang/project/output/hmdb51_%s.info.mat', ldc_pat);
+    f_metadata = '/home/ntrang/project/output/database/hmdb51.database.mat';
     
 	fprintf('Loading metadata...\n');
 	%metadata_ = load(f_metadata, 'metadata');
     metadata_ = load(f_metadata);
 	%metadata = metadata_.metadata;
-    metadata = metadata_.metadata;
+    metadata = metadata_.database;
 	
     % video_dir = '/net/per610a/export/das11f/plsang/dataset/MED2013/LDCDIST-RSZ';
-    video_dir = sprintf('/home/ntrang/project/dataset/hmdb51/%s', ldc_pat);
+    %video_dir = sprintf('/home/ntrang/project/dataset/hmdb51/%s', ldc_pat);
 		
-	fprintf('Loading metadata...\n');
+	%fprintf('Loading metadata...\n');
 	% medmd_file = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/medmd.mat';
     %medmd_file = '/home/ntrang/projects/output/hmdb51_2014_01_test.info.mat';
 	%load(medmd_file, 'MEDMD'); 
@@ -55,44 +55,47 @@ function [ feats ] = densetraj_select_features( descriptor, ldc_pat, max_feature
 	%max_features_per_video = ceil(ensure_coef*max_features/length(selected_videos));
     max_features_per_video = 1000;
 	%feats = cell(length(selected_videos), 1);
-	selected_videos = dir(video_dir);
+	%selected_videos = dir(video_dir);
     %parfor ii = 1:length(selected_videos),
-    for ii = 1:length(selected_videos),
+    for i = 1:length(metadata.event_names),
         
-        video_id = selected_videos(ii).name;
+        %video_id = selected_videos(ii).name;
         
-        if isempty(strfind(video_id, '.avi')),
-			warning('not video id format <%s>\n', video_id);
-			continue;
-        end
+        %if isempty(strfind(video_id, '.avi')),
+		%	warning('not video id format <%s>\n', video_id);
+		%	continue;
+        %end
         
         %video_name = selected_videos{ii};
-        video_name = video_id(1:end-4);
+        %video_name = video_id(1:end-4);
         
         %video_file = fullfile(video_dir, metadata.(video_name).ldc_pat);
-        video_file = fullfile(video_dir, video_id);
-		start_frame = 1;
-        end_frame = metadata.(video_name).num_frames;
-		
-		if end_frame - start_frame < 15,
-			continue;
-		end
-		
-		if end_frame - start_frame > sample_length,
-            start_frame = start_frame + randi(end_frame - start_frame - sample_length);
-            end_frame = start_frame + sample_length;
+        event_name = metadata.event_names{i};
+        event_info = metadata.events.(event_name);
+        for ii = 1:length(event_info),
+            video_file = event_info{ii}.video_dir;
+            start_frame = 1;
+            end_frame = event_info{ii}.num_frames;
+
+            if end_frame - start_frame < 15,
+                continue;
+            end
+
+            if end_frame - start_frame > sample_length,
+                start_frame = start_frame + randi(end_frame - start_frame - sample_length);
+                end_frame = start_frame + sample_length;
+            end
+
+            fprintf('\n--- [%d/%d] Computing features for video %s ...\n', ii, length(event_info), event_info{ii}.video_name);
+
+            feat = densetraj_extract_features(video_file, descriptor, start_frame, end_frame);
+
+            if size(feat, 2) > max_features_per_video,
+                feats{ii} = vl_colsubset(feat, max_features_per_video);
+            else
+                feats{ii} = feat;
+            end
         end
-		
-		fprintf('\n--- [%d/%d] Computing features for video %s ...\n', ii, length(selected_videos), video_name);
-		
-        feat = densetraj_extract_features(video_file, descriptor, start_frame, end_frame);
-        
-        if size(feat, 2) > max_features_per_video,
-            feats{ii} = vl_colsubset(feat, max_features_per_video);
-        else
-            feats{ii} = feat;
-        end
-        
     end
     
     % trangnt-_-

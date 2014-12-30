@@ -3,13 +3,13 @@ function feat = get_video_info()
 %   Detailed explanation goes her
     
     % Set up the mpeg audio decode command as a readable streamccc
-    ref_dir = '/home/ntrang/projects/dataset/hmdb51_format/01_test';
+    ref_dir = '/home/ntrang/project/dataset/hmdb51/brush_hair';
 	
 	fprintf('Listing...\n');
 	test_video = dir(ref_dir);
-    ldc_pat = '01_test';
+    ldc_pat = 'brush_hair';
 	
-    output_mat_file = sprintf('/home/ntrang/projects/output/hmdb51_2014_%s.info.mat', ldc_pat);
+    output_mat_file = sprintf('/home/ntrang/project/output/hmdb51_%s.info.mat', ldc_pat);
 	
 	%fh = fopen(output_file, 'w+');
 	%fprintf(fh, 'VIDEO,DURATION,NUMFRAMES\n');
@@ -61,9 +61,10 @@ function feat = get_video_info()
 		
 		video_name = video_id(1:end-4);
 		
-		cmd_fps = sprintf('ffmpeg -i "%s" 2>&1 | sed -n "0,/.*, \\(.*\\) fps.*/s/.*, \\(.*\\) fps.*/\\1/p"', video_file);
-		[~, fps] = system(cmd_fps);	
-		fps = str2num(strtrim(fps));
+		%cmd_fps = sprintf('ffmpeg -i "%s" 2>&1 | sed -n "0,/.*, \\(.*\\) fps.*/s/.*, \\(.*\\) fps.*/\\1/p"', video_file);
+		%[~, fps] = system(cmd_fps);	
+		%fps = str2num(strtrim(fps));
+        fps = 30; % use old ffmpeg > cannot get fps
 	
 		num_frames = floor(t * fps);
 		
@@ -98,6 +99,8 @@ function feat = get_video_info()
 		%lookup.(video_name).num_frames = NF(ii);
         metadata.(video_name).duration = DR(ii);
         metadata.(video_name).num_frames = NF(ii);
+        metadata.(video_name).ldc_pat = ldc_pat;
+        metadata.(video_name).full_name = video_name;
 	end
 	
 	%fprintf(fh, 'ALL,%d,#\n', sum_t);

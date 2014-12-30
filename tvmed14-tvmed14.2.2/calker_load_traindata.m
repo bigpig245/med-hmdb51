@@ -14,7 +14,8 @@ if isempty(database)
     error('Empty metadata file!!\n');
 end
 
-f_metadata = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/common/metadata_devel.mat';
+%f_metadata = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/common/metadata_devel.mat';
+f_metadata = '/home/ntrang/project/output/hmdb51_brush_hair.info.mat';
 fprintf('Loading metadata...\n');
 metadata_ = load(f_metadata, 'metadata');
 metadata = metadata_.metadata;
@@ -24,7 +25,7 @@ hists = zeros(ker.num_dim, database.num_clip);
 
 selected_label = zeros(1, database.num_clip);
 
-parfor ii = 1:database.num_clip, %
+for ii = 1:database.num_clip, %
 	
 	clip_name = database.clip_names{ii};
 	

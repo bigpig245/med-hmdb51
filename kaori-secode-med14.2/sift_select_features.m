@@ -23,22 +23,22 @@ function sift_select_features( sift_algo, param, version )
 	logmsg(logfile, msg);
 	tic;
 	
-	f_metadata = '/home/ntrang/trecvidmed13/metadata/common/metadata_devel.mat';
+	f_metadata = '/home/ntrang/project/output/hmdb51_brush_hair.info.mat';
 	fprintf('Loading metadata...\n');
 	metadata_ = load(f_metadata, 'metadata');
 	metadata = metadata_.metadata;
 	
-	kf_dir = '/home/ntrang/trecvidmed13/keyframes';
+	kf_dir = '/home/ntrang/project/output/keyframes';
 	
 	fprintf('Loading metadata...\n');
-	medmd_file = '/home/ntrang/trecvidmed13/metadata/medmd.mat';
-	load(medmd_file, 'MEDMD'); 
+	%medmd_file = '/home/ntrang/trecvidmed13/metadata/medmd.mat';
+	%load(medmd_file, 'MEDMD'); 
 	
-	clips = MEDMD.EventBG.default.clips;
-	list_video = unique(clips);	% 4992 clips
+	%clips = MEDMD.EventBG.default.clips;
+	%list_video = unique(clips);	% 4992 clips
 	
-	num_selected_videos = ceil(video_sampling_rate * length( list_video ));
-	rand_index = randperm(length(list_video));
+	%num_selected_videos = ceil(video_sampling_rate * length( list_video ));
+	%rand_index = randperm(length(list_video));
 	selected_index = rand_index(1:num_selected_videos);
     selected_videos = list_video(selected_index);
 	

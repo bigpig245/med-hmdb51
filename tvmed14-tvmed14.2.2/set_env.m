@@ -12,9 +12,9 @@ addpath('/home/ntrang/project/tools/libsvm-3.18/matlab');
 
 % common
 % addpath('/net/per610a/export/das11f/plsang/codes/common');
-addpath('/home/ntrang/project/common');
+addpath('/home/ntrang/project/codes/common');
 
-% mfcc - kmail
+% mfcc - kamil
 % addpath('/net/per900a/raid0/plsang/tools/mfcc-kamil');
 addpath('/home/ntrang/project/tools/mfcc/mfcc');
 
@@ -24,7 +24,7 @@ addpath('/home/ntrang/project/tools/voicebox');
 
 % rastamat
 % addpath('/net/per900a/raid0/plsang/software/rastamat');
-addpath('/home/ntrang/projects/tool/rastamat');
+addpath('/home/ntrang/project/tools/rastamat');
 
 % lib gmm-fisher
 % addpath('/net/per900a/raid0/plsang/tools/gmm-fisher-kaori/matlab');
@@ -32,6 +32,6 @@ addpath('/home/ntrang/project/tools/gmm-fisher/matlab');
 
 % gist descriptor
 % addpath('/net/per900a/raid0/plsang/software/gistdescriptor');
-addpath('/home/ntrang/projects/tool/gistdescriptor');
+addpath('/home/ntrang/project/tools/gistdescriptor');
 
 %featpipem_addpaths

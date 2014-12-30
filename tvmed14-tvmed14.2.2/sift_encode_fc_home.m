@@ -16,7 +16,7 @@ function sift_encode_fc_home( proj_name, exp_ann, sift_algo, param, codebook_siz
 	%metadata = metadata.metadata;
 	
     if ~exist('ldc_pat', 'var'),
-        ldc_pat = '01_test';
+        ldc_pat = 'brush_hair';
     end
 	
 	if ~exist('codebook_size', 'var'),
@@ -42,22 +42,22 @@ function sift_encode_fc_home( proj_name, exp_ann, sift_algo, param, codebook_siz
 	end
 	
 	%output_dir = sprintf('/net/per610a/export/das11f/plsang/%s/feature/%s/%s', proj_name, exp_ann, feature_ext);
-    output_dir = sprintf('/home/ntrang/projects/output/%s/feature/%s/%s', proj_name, exp_ann, feature_ext);
+    output_dir = sprintf('/home/ntrang/project/output/%s/feature/%s/%s', proj_name, exp_ann, feature_ext);
     if ~exist(output_dir, 'file'),
 		mkdir(output_dir);
     end
     
-    codebook_file = sprintf('/home/ntrang/projects/output/%s/feature/bow.codebook.devel/%s.%s.v14.2.sift/data/codebook.gmm.%d.%d.mat', ...
-		proj_name, sift_algo, num2str(param), codebook_size, dimred);
+    codebook_file = sprintf('/home/ntrang/project/output/%s/feature/bow.codebook.devel/%s.%s.v14.2.sift/data/codebook.gmm.%s.%d.%d.mat', ...
+		proj_name, sift_algo, num2str(param), ldc_pat, codebook_size, dimred);
 		
 	fprintf('Loading codebook [%s]...\n', codebook_file);
     codebook_ = load(codebook_file, 'codebook');
     codebook = codebook_.codebook;
  
  	low_proj = [];
-	if dimred < default_dim,
-		lowproj_file = sprintf('/home/ntrang/projects/output/%s/feature/bow.codebook.devel/%s.%s.bg.sift/data/lowproj.%d.%d.mat', ...
-			proj_name, sift_algo, num2str(param), dimred, default_dim);
+	if dimred <= default_dim,
+		lowproj_file = sprintf('/home/ntrang/project/output/%s/feature/bow.codebook.devel/%s.%s.v14.2.sift/data/lowproj.%s.%d.%d.mat', ...
+			proj_name, sift_algo, num2str(param), ldc_pat, dimred, default_dim);
 			
 		fprintf('Loading low projection matrix [%s]...\n', lowproj_file);
 		low_proj_ = load(lowproj_file, 'low_proj');
@@ -75,7 +75,7 @@ function sift_encode_fc_home( proj_name, exp_ann, sift_algo, param, codebook_siz
 	
 	%clips = [train_clips, test_clips];
     
-    video_dir = '/home/ntrang/projects/dataset/hmdb51/01_test';
+    video_dir = '/home/ntrang/project/dataset/hmdb51/brush_hair';
 	clips = dir(video_dir);
     
     if ~exist('start_seg', 'var') || start_seg < 1,
@@ -88,7 +88,7 @@ function sift_encode_fc_home( proj_name, exp_ann, sift_algo, param, codebook_siz
     
     %tic
 	
-    kf_dir = sprintf('/home/ntrang/projects/dataset/keyframes');
+    kf_dir = sprintf('/home/ntrang/project/output/keyframes');
     
     %parfor ii = start_seg:end_seg,
     for ii = start_seg:end_seg,
@@ -100,7 +100,8 @@ function sift_encode_fc_home( proj_name, exp_ann, sift_algo, param, codebook_siz
         end
         
 		%output_file = sprintf('%s/%s/%s.mat', output_dir, fileparts(metadata.(video_id).ldc_pat), video_id);
-        output_file = sprintf('%s/%s/%s.mat', output_dir, ldc_pat, video_id);
+        video_name = video_id(1:end-4);
+        output_file = sprintf('%s/%s/%s.mat', output_dir, ldc_pat, video_name);
 		
         if exist(output_file, 'file'),
             fprintf('File [%s] already exist. Skipped!!\n', output_file);
@@ -130,8 +131,9 @@ function sift_encode_fc_home( proj_name, exp_ann, sift_algo, param, codebook_siz
             count_zero_points = sum(all(descrs == 0, 1));
             numbers_of_points = size(descrs, 2);
             if isempty(descrs) || count_zero_points > 0.5*numbers_of_points,
-                %warning('Maybe blank image...[%s]. Skipped!\n', img_name);
-                continue;
+                warning('Maybe blank image...[%s]. Skipped!\n', img_name);
+                descrs = descrs(:, any(descrs));
+                %continue;
             end
 			
 			code_ = sift_do_encoding(enc_type, descrs, codebook, [], low_proj);
@@ -144,7 +146,7 @@ function sift_encode_fc_home( proj_name, exp_ann, sift_algo, param, codebook_siz
 		% apply power normalization again
 		code = sign(code) .* sqrt(abs(code));
 		
-        par_save(output_file, code); % MATLAB don't allow to save inside parfor loop             
+        save(output_file, 'code'); % MATLAB don't allow to save inside parfor loop             
         
     end
     

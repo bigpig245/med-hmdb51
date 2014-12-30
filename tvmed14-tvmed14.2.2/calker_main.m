@@ -1,8 +1,8 @@
 function calker_main(proj_name, exp_id, feature_ext, varargin)
 
-addpath('/net/per900a/raid0/plsang/tools/kaori-secode-calker-v6/support');
-addpath('/net/per900a/raid0/plsang/tools/libsvm-3.17/matlab');
-addpath('/net/per900a/raid0/plsang/tools/vlfeat-0.9.16/toolbox');
+addpath('/home/ntrang/project/tools/kaori-secode-calker-v7.2-master/support');
+addpath('/home/ntrang/project/tools/libsvm-3.18/matlab');
+addpath('/home/ntrang/project/tools/vlfeat-0.9.19-bin/vlfeat-0.9.19/toolbox');
 vl_setup;
 
 exp_name = [proj_name, '-', exp_id];
@@ -14,8 +14,8 @@ ker_type = 'kl2';
 cross = 0;
 open_pool = 0;
 suffix = '';
-test_pat = 'kindredtest';
-eventkit = 'EK10Ex';
+test_pat = 'brush_hair';
+eventkit = 'brush_hair';
 miss_type = 'RN'; % RN: Related example as Negative, RP: Related example as Positive, NR: No related example
 
 for k=1:2:length(varargin),
@@ -49,14 +49,15 @@ end
 
 ker = calker_build_kerdb(feature_ext, ker_type, feat_dim, cross, suffix);
 
-ker.prms.tvprefix = 'TVMED13';
+ker.prms.tvprefix = 'TVMED15';
 ker.prms.tvtask = 'PS';
 ker.prms.eventkit = eventkit; % 'EK130Ex';
 ker.prms.rtype = miss_type;	% RN: Related example as Negative, RP: Related example as Positive, NR: No related example 
 ker.prms.train_fea_pat = 'devel';	% train pat name where local features are stored
 ker.prms.test_fea_pat = 'devel';	% train pat name where local features are stored
 
-ker.prms.meta_file = sprintf('%s/%s/metadata/%s-%s-%s-%s/database.mat', ker.proj_dir, proj_name, ker.prms.tvprefix, ker.prms.tvtask, ker.prms.eventkit, ker.prms.rtype);
+%ker.prms.meta_file = sprintf('%s/output/database/%s_%s.database.mat', ker.proj_dir, proj_name, test_pat);
+ker.prms.meta_file = sprintf('%s/output/database/%s.database.mat', ker.proj_dir, proj_name);
 ker.prms.seg_name = seg_name;
 
 ker.dev_pat = 'dev';

@@ -4,12 +4,12 @@ if [ "$#" -ne 3 ]; then
 fi
 
 count=0
-outdir='/home/ntrang/project/output/keyframes'
+outdir='/home/ntrang/project/output/hmdb51/training/keyframes'
 if [ ! -d $outdir ]; then
     mkdir -p $outdir
 fi
 
-ldc_dir='/home/ntrang/project/dataset/hmdb51'
+ldc_dir='/home/ntrang/project/dataset/hmdb51/training'
 video_dir=$ldc_dir/$1
 
 

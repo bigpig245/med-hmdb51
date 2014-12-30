@@ -82,4 +82,11 @@ Lỗi này do config chưa ăn thì phải.
 - Tiếp theo đó mở file /etc/ld.so.conf.d/libc.conf xem trong này đã có chưa thư mục mà đã được tìm thấy ở trên chưa, nếu chưa có thì thêm vào... có ròi thì thôi =))
 - Chạy lệnh [# ldconfig], [sudo ldconfig], [ldconfig] gì gì đó xong chạy lại là okie :sure:
 
+//Kiểm tra kết quả test ntn nhỉ?
+Đơn cử như HMDB51 đã chia thành từng loại action rồi. Trong các thí nghiệm đã cài đặt trước đó, người ta thường chia mỗi dataset thành từng group rồi chia sẵn train data và test data luôn rồi thì phải?
+Chạy 70 clips tạo codebook rồi đưa từng clip test vào rồi kiểm tra nó có thuộc hay không
+>> Độ chính xác bằng số positive clip/ tổng số clip test?
+Hay là đưa tất cả toàn bộ clip training vào test rồi kiểm tra những clip thuộc event đó
+>> Độ chính xác bằng số positive đúng thực sự trong đống positive trả về của chương trình/ đống positive trả về của chương trình
+Tính độ chính xác ntn?
 
