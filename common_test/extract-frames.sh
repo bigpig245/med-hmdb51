@@ -4,16 +4,16 @@ if [ "$#" -ne 3 ]; then
 fi
 
 count=0
-outdir='/home/ntrang/projects/output/keyframes'
+outdir='/home/ntrang/project/output/keyframes'
 if [ ! -d $outdir ]; then
     mkdir -p $outdir
 fi
 
-ldc_dir='/home/ntrang/projects/dataset/hmdb51'
+ldc_dir='/home/ntrang/project/dataset/hmdb51'
 video_dir=$ldc_dir/$1
 
 
-for f in `find $video_dir -name "*.mp4"`
+for f in `find $video_dir -name "*.avi"`
 do 
 	if [ "$count" -ge $2 ] && [ "$count" -lt $3 ]; then
 		#echo $count
