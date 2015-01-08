@@ -72,6 +72,30 @@ calker_main('hmdb51', 'brush_hair', 'feat_dim', 'cross', ''); // cái này mới
 
 
 
+// Các vấn đề cần hỏi
+1. Dataset cũ như thế nào nhỉ? Cấu trúc thư mục, tên file, đã chia sẵn bộ training và test chưa? Kiểm tra độ chính xác khi chạy thuật toán như thế nào?
+	- Dataset mới thì đã chia dữ liệu thành các action rồi, tên file dài thòng. Thường mỗi action cho mỗi event có ít nhất 2 video, hiếm lắm mới có action chỉ có 1 video.
+	- Theo các paper chạy dataset này thì có vẻ như họ tự chia dataset theo 30/70.
+	- Về training codebook thì có phải là mỗi codebook sẽ chỉ chứa thông tin của 1 event không thôi hay là chứa hết luôn?
+	- Khi kiểm tra độ chính xác của bộ test thì kiểm tra như thế nào?
+	- Dataset cũ video có vẻ như rất dài, lên đến hơn 400s. Dataset mới video rất ngắn, trung bình từ 2 - 3s, cao nhất là không quá 20s
+2. Luồng của thuật toán?
+	- Trích xuất đặc trưng > Build codebook > Training (libsvm) > Classify
+	- Đầu ra của mỗi bước này là gì?
+	
+	- Bài toán cũ là trích xuất frame xong sau đó trích xuất đặc trưng từ từng frame.
+	- Thuật toán dense_trajectory là trích xuất trực tiếp từ video luôn?
+3. Tính độ chính xác như thế nào?
+
+//end
+
+
+
+
+
+
+
+
 // trangnt end
 + dense trajectory:
 
