@@ -1,4 +1,4 @@
-function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, codebook_size, spm, sift_algo, param, start_seg, end_seg )
+function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, codebook_size, spm, sift_algo, descriptor, param, start_seg, end_seg )
 %ENCODE Summary of this function goes here
 %   Detailed explanation goes here
 %% kf_dir_name: name of keyframe folder, e.g. keyframe-60 for segment length of 60s   
@@ -7,7 +7,8 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
     % setting
     set_env;
 
-    fea_dir = sprintf('/net/per900a/raid0/plsang/%s/feature/%s', proj_name, kf_dir_name);
+    %fea_dir = sprintf('/net/per900a/raid0/plsang/%s/feature/%s', proj_name, kf_dir_name);
+    fea_dir = sprintf('/home/ntrang/project/%s/feature/%s', proj_name, kf_dir_name);
     if ~exist(fea_dir, 'file'),
             mkdir(fea_dir);
     end
@@ -29,15 +30,17 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
 		mkdir(output_dir);
 	end
     
-    codebook_file = sprintf('/net/per900a/raid0/plsang/%s/feature/bow.codebook.%s.devel/%s.%s.sift/data/codebook.%d.mat', proj_name, proj_name, sift_algo, num2str(param), codebook_size);
+    %codebook_file = sprintf('/home/ntrang/project/%s/feature/bow.codebook.%s.devel/%s.%s.sift/data/codebook.%d.mat', proj_name, proj_name, sift_algo, num2str(param), codebook_size);
+    codebook_file = sprintf('/home/ntrang/project/output/%s/feature/bow.codebook.devel/%s.%s/data/codebook.gmm.training.256.192.mat', proj_name, sift_algo, descriptor);
 	
 	fprintf('Loading codebook [%s]...\n', codebook_file);
     codebook_ = load(codebook_file, 'codebook');
     codebook = codebook_.codebook;
     
-	kdtree = vl_kdtreebuild(codebook);
+	kdtree = vl_kdtreebuild(codebook.mean);
 	
-    [segments, sinfos, vinfos] = load_segments(proj_name, szPat, kf_dir_name);
+    %[segments, sinfos, vinfos] = load_segments(proj_name, szPat, kf_dir_name);
+    [segments, sinfos, vinfos] = load_segments(proj_name, szPat);
     
     if ~exist('start_seg', 'var') || start_seg < 1,
         start_seg = 1;
@@ -49,10 +52,10 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
     
     %tic
 	
-    kf_dir = sprintf('/net/per900a/raid0/plsang/%s/keyframes/%s', proj_name, szPat);
+    kf_dir = sprintf('/home/ntrang/project/%s/keyframes/%s', proj_name, szPat);
 	
 	if strcmp(proj_name, 'trecvidmed10'),
-		kf_dir = sprintf('/net/per900a/raid0/plsang/%s/keyframes', proj_name);
+		kf_dir = sprintf('/home/ntrang/project/%s/keyframes', proj_name);
 	end
     
 		

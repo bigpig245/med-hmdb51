@@ -53,7 +53,7 @@ Các sửa:
 
 // Make improve trajectory bị lỗi
 g++ -Wall -o release/DenseTrackStab .build_release/DenseTrackStab.o -I /usr/include/ $(pkg-config --cflags --libs opencv)
-
+>> Hình như do make này bị lỗi nên run cũng lỗi theo....
 
 // install ffmpeg
 sudo apt-get -y install autoconf automake build-essential libass-dev libfreetype6-dev libgpac-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libx11-dev libxext-dev libxfixes-dev pkg-config texi2html zlib1g-dev
@@ -89,4 +89,12 @@ Chạy 70 clips tạo codebook rồi đưa từng clip test vào rồi kiểm tr
 Hay là đưa tất cả toàn bộ clip training vào test rồi kiểm tra những clip thuộc event đó
 >> Độ chính xác bằng số positive đúng thực sự trong đống positive trả về của chương trình/ đống positive trả về của chương trình
 Tính độ chính xác ntn?
+
+>> Chia dataset bằng tay à :'(
+Huhuhu, mình đâu có rảnh thế đâu cơ chứ?
+H phải làm sao nhỉ?
+Sao chạy mãi không xong :(((
+Móa, đang chạy mà die chắc tức ói máu quá :<<<<<<<<<<<<
+
+
 

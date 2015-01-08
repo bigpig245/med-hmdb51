@@ -15,66 +15,73 @@ if isempty(database)
 end
 
 %f_metadata = '/net/per610a/export/das11f/plsang/trecvidmed13/metadata/common/metadata_devel.mat';
-f_metadata = '/home/ntrang/project/output/hmdb51_brush_hair.info.mat';
-fprintf('Loading metadata...\n');
-metadata_ = load(f_metadata, 'metadata');
-metadata = metadata_.metadata;
-prms.metadata = metadata;
+%f_metadata = '/home/ntrang/project/output/hmdb51_brush_hair.info.mat';
+%fprintf('Loading metadata...\n');
+%metadata_ = load(f_metadata, 'metadata');
+%metadata = metadata_.metadata;
+%prms.metadata = metadata;
 
 hists = zeros(ker.num_dim, database.num_clip);
 
 selected_label = zeros(1, database.num_clip);
 
-for ii = 1:database.num_clip, %
+%for ii = 1:database.num_clip, %
+for i = 1:length(database.event_names),
+    
+    event_name = database.event_names{i};
+    event_info = database.events.(event_name);
+    
+    for ii = 1:length(event_info),
 	
-	clip_name = database.clip_names{ii};
-	
-	%segment_path = sprintf('%s/%s/feature/%s/%s/%s/%s/%s.mat',...
-	%					ker.proj_dir, proj_name, ker.prms.seg_name, ker.feat_raw, ker.prms.train_fea_pat, clip_name, clip_name);   
-	segment_path = sprintf('%s/%s/feature/%s/%s/%s/%s.mat',...
-					ker.proj_dir, proj_name, ker.prms.seg_name, ker.feat_raw, fileparts(prms.metadata.(clip_name).ldc_pat), clip_name);
-					
-	if ~exist(segment_path),
-		warning('File [%s] does not exist!\n', segment_path);
-		continue;
-	end
-	
-	code = load(segment_path, 'code');
-	code = code.code;
-	
-	if size(code, 1) ~= ker.num_dim,
-		warning('Dimension mismatch [%d-%d-%s]. Skipped !!\n', size(code, 1), ker.num_dim, segment_path);
-		size(code)
-		continue;
-	end
-	
-	if any(isnan(code)),
-		warning('Feature contains NaN [%s]. Skipped !!\n', segment_path);
-		msg = sprintf('Feature contains NaN [%s]', segment_path);
-		log(msg);
-		continue;
-	end
-	
-	% event video contains all zeros --> skip, keep backgroud video
-	if all(code == 0),
-		warning('Feature contains all zeros [%s]. Skipped !!\n', segment_path);
-		msg = sprintf('Feature contains all zeros [%s]', segment_path);
-		log(msg);
-		continue;
-	end
-	
-	if ~all(code == 0),
-		if strcmp(ker.feat_norm, 'l1'),
-			code = code / norm(code, 1);
-		elseif strcmp(ker.feat_norm, 'l2'),
-			code = code / norm(code, 2);
-		else
-			error('unknown norm!\n');
-		end
+        clip_name = event_info{ii}.video_name;
+
+        %segment_path = sprintf('%s/%s/feature/%s/%s/%s/%s/%s.mat',...
+        %					ker.proj_dir, proj_name, ker.prms.seg_name, ker.feat_raw, ker.prms.train_fea_pat, clip_name, clip_name);   
+        segment_path = sprintf('%s/%s/feature/%s/%s/%s/%s.mat',...
+                        ker.proj_dir, proj_name, ker.prms.seg_name, ker.feat_raw, fileparts(event_name), clip_name);
+
+        if ~exist(segment_path),
+            warning('File [%s] does not exist!\n', segment_path);
+            continue;
+        end
+
+        code = load(segment_path, 'code');
+        code = code.code;
+
+        if size(code, 1) ~= ker.num_dim,
+            warning('Dimension mismatch [%d-%d-%s]. Skipped !!\n', size(code, 1), ker.num_dim, segment_path);
+            size(code)
+            continue;
+        end
+
+        if any(isnan(code)),
+            warning('Feature contains NaN [%s]. Skipped !!\n', segment_path);
+            msg = sprintf('Feature contains NaN [%s]', segment_path);
+            log(msg);
+            continue;
+        end
+
+        % event video contains all zeros --> skip, keep backgroud video
+        if all(code == 0),
+            warning('Feature contains all zeros [%s]. Skipped !!\n', segment_path);
+            msg = sprintf('Feature contains all zeros [%s]', segment_path);
+            log(msg);
+            continue;
+        end
+
+        if ~all(code == 0),
+            if strcmp(ker.feat_norm, 'l1'),
+                code = code / norm(code, 1);
+            elseif strcmp(ker.feat_norm, 'l2'),
+                code = code / norm(code, 2);
+            else
+                error('unknown norm!\n');
+            end
+        end
+
+        hists(:, ii) =  code;
+        selected_label(ii) = 1;
     end
-	
-	hists(:, ii) =  code;
-	selected_label(ii) = 1;
 	
 end
 
