@@ -91,6 +91,26 @@ calker_main('hmdb51', 'brush_hair', 'feat_dim', 'cross', ''); // cái này mới
 
 
 
+// Cấu trúc chạy thuật toán
+calker_main(proj_name, exp_id, feature_ext, varargin) //exp là gì nhỉ
+	- ker = calker_build_kerdb: xây dựng cấu trúc database
+	- calker_cal_train_kernel(proj_name, exp_name, ker)
+		+ calker_load_traindata(proj_name, exp_name, ker)
+			> Chuẩn hóa vector (cho từng video), chỉ dùng l1 và l2 norm
+			> selected_label là gì nhỉ, có phải là đánh nhãn cho từng video không ta? // nói chung là không hỉu lắm ròi đó -_-
+		+ calker_feature_scale(data, scale_params): scale data
+		+ Calculate kernel
+		+ calcKernel
+	- calker_train_kernel(proj_name, exp_name, ker)
+		+ Load thông tin database
+		+ Training SVM calker_svmkernellearn (oát đờ hợi) -_-
+		+ svmflip
+	- calker_cal_test_kernel(proj_name, exp_name, ker): khác gì với cái training nhỉ?
+	- calker_test_kernel(proj_name, exp_name, ker): same here
+	- calker_cal_map(proj_name, exp_name, ker, videolevel): tính toán score cho từng video à?
+	- calker_cal_rank(proj_name, exp_name, ker): xếp hạng cho từng video?
+
+	Thặc sự là cũng chả bit hỏi gì rồi đới....... Haizzzzz
 
 
 
