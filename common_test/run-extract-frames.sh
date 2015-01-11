@@ -1,4 +1,4 @@
-ldc_dir='/home/ntrang/projects/dataset/hmdb51'
+ldc_dir='/home/ntrang/project/dataset/hmdb51'
 
 # traverse all folders in local directory
 find $ldc_dir -mindepth 1 -maxdepth 1 -type d | while read -r dir

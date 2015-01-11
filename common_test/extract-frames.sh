@@ -4,12 +4,12 @@ if [ "$#" -ne 3 ]; then
 fi
 
 count=0
-outdir='/home/ntrang/project/output/hmdb51/training/keyframes'
+outdir='/home/ntrang/project/output/hmdb51/keyframes'
 if [ ! -d $outdir ]; then
     mkdir -p $outdir
 fi
 
-ldc_dir='/home/ntrang/project/dataset/hmdb51/training'
+ldc_dir='/home/ntrang/project/dataset/hmdb51'
 video_dir=$ldc_dir/$1
 
 
@@ -23,12 +23,12 @@ do
 		pat="${fp#${ldc_dir}}"		# not equal $1 for events kits dir, ie. E001/...
 		
 		od=$outdir${pat%/*}/$vid 	#every extracted frames are saved in the same folder which is named by video file name
-		echo $od
+		#echo $od
 		if [ ! -d $od ] 		# if folder does not exist, extract frames
 		then
 			mkdir -p $od
 			{
-				echo [$count]" Extracting keyframes for video $vid ..."
+				#echo [$count]" Extracting keyframes for video $vid ..."
 				ffmpeg -i $f -loglevel error -r 0.5 $od/$vid-%6d.jpg
 			} || {
 				echo "Error in $vid..."
