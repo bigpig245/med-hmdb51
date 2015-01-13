@@ -1,7 +1,7 @@
 function calker_late_fusion()
 
-	proj_dir = '/net/per610a/export/das11f/plsang';
-	proj_name = 'ucf101';
+	proj_dir = 'home/ntrang/project';
+	proj_name = 'hmdb51';
 	
     suffix = '--calker-ucf';
 	run_names = {'covdet.hessian.sift.cb256.devel.accumulate.pca.fc.l2',
@@ -30,7 +30,8 @@ function calker_late_fusion()
 	fused_scores = cell(1, num_splits);
 	for ii=1:length(run_names),
 		run_name = run_names{ii};
-		score_file = sprintf('%s/%s%s/scores/%s.scores.mat', calker_exp_root, run_name, suffix, run_name);
+		%score_file = sprintf('%s/%s%s/scores/%s.scores.mat', calker_exp_root, run_name, suffix, run_name);
+        score_file = output_file;
 		if ~exist(score_file, 'file'),
 			error('File %s not found!\n', score_file);
 		end

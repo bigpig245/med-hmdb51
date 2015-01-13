@@ -2,7 +2,7 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 
     test_on_train = 1;
 
-	meta_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/metadata.mat';
+	meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
 	fprintf('--- Loading metadata...\n');
 	metadata = load(meta_file, 'metadata');
 	metadata = metadata.metadata;

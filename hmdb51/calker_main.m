@@ -53,12 +53,12 @@ mkdir(fullfile(calker_exp_dir, 'log'));
 calker_create_database();
 
 %open pool
-%if matlabpool('size') == 0 && open_pool > 0, matlabpool(open_pool); end;
-%calker_load_data(ker);
-%calker_cal_kernel(ker);
-%calker_train_kernel(ker, start_split, end_split, start_class, end_class);
-%calker_test_kernel(ker, start_split, end_split);
-%calker_cal_acc_mfcc(ker);
+if matlabpool('size') == 0 && open_pool > 0, matlabpool(open_pool); end;
+calker_load_data(ker);
+calker_cal_kernel(ker);
+calker_train_kernel(ker, start_split, end_split, start_class, end_class);
+calker_test_kernel(ker, start_split, end_split);
+calker_cal_acc_mfcc(ker);
 calker_cal_acc(ker);
 calker_cal_map(ker);
 

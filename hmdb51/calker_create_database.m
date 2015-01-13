@@ -12,6 +12,14 @@ function calker_create_database()
     log(sprintf('Start create database: %s', meta_file));
 	events = dir(dataset_dir);
     
+    metadata = struct;
+    metadata.videos = {};
+    metadata.classes = {};
+    %metadata.classids = [];
+    metadata.groups = {};
+    metadata.clips = [];
+    metadata.labels = {};
+    
     for i = 1:length(events),
         
         event_name = events(i).name;
@@ -28,15 +36,7 @@ function calker_create_database()
         fclose(fh);
 
         video_names = infos{1};
-        video_labels = infos{2};        
-
-        metadata = struct;
-        metadata.videos = {};
-        metadata.classes = {};
-        %metadata.classids = [];
-        metadata.groups = {};
-        metadata.clips = [];
-        metadata.labels = {};
+        video_labels = infos{2};
         
         %traverse all videos in event
         event_dir = sprintf('%s/%s', dataset_dir, event_name);

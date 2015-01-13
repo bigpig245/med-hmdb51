@@ -2,7 +2,7 @@ function calker_cal_acc(ker)
 	
 	%videolevel: 1 (default): video-based approach, 0: segment-based approach
 	
-	meta_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/metadata.mat';
+	meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
 	fprintf('--- Loading metadata...\n');
 	metadata = load(meta_file, 'metadata');
 	metadata = metadata.metadata;
@@ -44,7 +44,7 @@ function calker_cal_acc(ker)
 		
 		acc = zeros(n_class + 1, 1);
 		for jj = 1:n_class,
-			class_name = metadata.all_classes{jj};
+			class_name = metadata.classes{jj};
 			
 			all_test_class_idx = metadata.classids(split.test_idx);
 			

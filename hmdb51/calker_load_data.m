@@ -5,8 +5,8 @@ function calker_load_data(ker)
 % load database
 
 
-fea_dir = '/net/per610a/export/das11f/plsang/ucf101/feature/video';
-meta_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/metadata.mat';
+fea_dir = '/home/ntrang/project/output/hmdb51/feature';
+meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
 
 fprintf('load metadata...\n');
 metadata = load(meta_file, 'metadata');
@@ -28,8 +28,8 @@ end
 data = struct;
 hists = zeros(ker.num_dim, length(videos));
 selected_idx = ones(1, length(videos));
-
-parfor ii = 1:length(videos), %
+% parfor
+for ii = 1:length(videos), %
 	video_name = videos{ii};
 	segment_path = sprintf('%s/%s/%s/%s.mat', fea_dir, ker.feat_raw, video_name, video_name);
 	
