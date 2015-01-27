@@ -12,7 +12,8 @@ feature_ext = [feature_raw, '.', ker.feat_norm];
 
 ker.feat     = feature_ext ;
 ker.fea_fmt  = 'dvf';
-ker.num_dim = feat_dim; %98304;
+%ker.num_dim = feat_dim; %98304;
+ker.num_dim = 73728;
 ker.pyrLevel = [] ;
 ker.histName = [feature_ext '.dev_hists'];
 ker.scaleparamsName = [feature_ext '.scaleparams.' ker_type];
@@ -38,5 +39,5 @@ ker.startG = -12;
 ker.endG = 3;
 ker.stepG = 1;
 
-ker.proj_dir = 'home/ntrang/project';
+ker.proj_dir = 'project';
 end

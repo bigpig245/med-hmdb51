@@ -1,7 +1,7 @@
 function calker_build_train_test_splist()
-	%% follow train/test splits from ICCV Workshop THUMOS
+	%% follow train/test splits from Workshop
 	%split_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/iccv2013_splits.mat';
-	split_file = '/home/ntrang/project/output/hmdb51/metadata/iccv2013_splits.mat';
+	split_file = '/home/ntrang/project/output/hmdb51/metadata/splits.mat';
 	if exist(split_file, 'file'),
 		fprintf('File already exist! Skipped\n');
 		return;

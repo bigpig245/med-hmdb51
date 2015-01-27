@@ -56,12 +56,12 @@ function calker_late_fusion()
 	
 	acc_file = sprintf('%s/scores/%s.accuracy.mat', calker_exp_dir, fusion_name);
 	
-	meta_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/metadata.mat';
+	meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
 	fprintf('--- Loading metadata...\n');
 	metadata = load(meta_file, 'metadata');
 	metadata = metadata.metadata;
 
-	split_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/iccv2013_splits.mat';
+	split_file = '/home/ntrang/project/output/hmdb51/metadata/splits.mat';
 	fprintf('--- Loading splits...\n');
 	splits = load(split_file, 'splits');
 	splits = splits.splits;

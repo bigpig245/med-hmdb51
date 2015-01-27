@@ -14,7 +14,7 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
     end
         
     % encoding type
-    enc_type = 'kcb';
+    enc_type = 'fisher';
 	
 	if ~exist('codebook_size', 'var'),
 		codebook_size = 4000;
@@ -31,8 +31,8 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
 	end
     
     %codebook_file = sprintf('/home/ntrang/project/%s/feature/bow.codebook.%s.devel/%s.%s.sift/data/codebook.%d.mat', proj_name, proj_name, sift_algo, num2str(param), codebook_size);
-    codebook_file = sprintf('/home/ntrang/project/output/%s/feature/bow.codebook.devel/%s.%s/data/codebook.gmm.training.256.192.mat', proj_name, sift_algo, descriptor);
-	
+    %codebook_file = sprintf('/home/ntrang/project/output/%s/feature/bow.codebook.devel/%s.%s/data/codebook.gmm.training.256.192.mat', proj_name, sift_algo, descriptor);
+	codebook_file = '/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/idensetraj.mbh/data/codebook.gmm.training.256.192.mat';
 	fprintf('Loading codebook [%s]...\n', codebook_file);
     codebook_ = load(codebook_file, 'codebook');
     codebook = codebook_.codebook;
@@ -40,55 +40,72 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
 	kdtree = vl_kdtreebuild(codebook.mean);
 	
     %[segments, sinfos, vinfos] = load_segments(proj_name, szPat, kf_dir_name);
-    [segments, sinfos, vinfos] = load_segments(proj_name, szPat);
+    %[segments, sinfos, vinfos] = load_segments(proj_name, szPat);
     
     if ~exist('start_seg', 'var') || start_seg < 1,
         start_seg = 1;
     end
     
-    if ~exist('end_seg', 'var') || end_seg > length(segments),
+    if ~exist('end_seg', 'var') , %|| end_seg > length(segments),
         end_seg = length(segments);
     end
     
-    %tic
+    video_dir = '/home/ntrang/project/dataset/hmdb51/';
 	
-    kf_dir = sprintf('/home/ntrang/project/%s/keyframes/%s', proj_name, szPat);
+    %kf_dir = sprintf('/home/ntrang/project/%s/keyframes/%s', proj_name, szPat);
+    kf_dir = sprintf('/home/ntrang/project/output/%s/keyframes', proj_name);
 	
 	if strcmp(proj_name, 'trecvidmed10'),
 		kf_dir = sprintf('/home/ntrang/project/%s/keyframes', proj_name);
-	end
+    end
     
-		
-    parfor ii = start_seg:end_seg,
-        segment = segments{ii};                 
+    f_metadata = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
+    load(f_metadata, 'metadata');
     
-        pattern =  '(?<video>\w+)\.\w+\.frame(?<start>\d+)_(?<end>\d+)';
-        info = regexp(segment, pattern, 'names');
+    for i = 1:length(metadata.videos),
+        event_name = metadata.classes{i};
+        video_name = metadata.videos{i};
+        label = metadata.labels{i};
         
-        output_file = [output_dir, '/', info.video, '/', segment, '.mat'];
-        if exist(output_file, 'file'),
-            fprintf('File [%s] already exist. Skipped!!\n', output_file);
+        if label == 2, %if video is used for training, ignore it
             continue;
         end
         
-        video_kf_dir = fullfile(kf_dir, info.video);
+        video_file = sprintf('%s/%s/%s.avi', video_dir, event_name, video_name);
         
-        start_frame = str2num(info.start);
-        end_frame = str2num(info.end);
+		
+        %parfor ii = start_seg:end_seg,
+        %segment = segments{ii};                 
+    
+        %pattern =  '(?<video>\w+)\.\w+\.frame(?<start>\d+)_(?<end>\d+)';
+        %info = regexp(segment, pattern, 'names');
+        
+        output_file = [output_dir, '/', video_name, '.mat'];
+        if exist(output_file, 'file'),
+            fprintf('File [%s] already exist. Skipped!!\n', video_file);
+            continue;
+        end
+        
+        video_kf_dir = fullfile(kf_dir, event_name, video_name);
+        
+        %start_frame = str2num(info.start);
+        %end_frame = str2num(info.end);
         
 		kfs = dir([video_kf_dir, '/*.jpg']);
        
 		%% update Jul 5, 2013: support segment-based
-		max_frames = max(vinfos.(info.video));
-		max_keyframes = length(kfs);
+		%max_frames = get_num_frames(video_file);
+		%max_keyframes = get_num_frames(length(dir(video_file))-2);
 		
-        start_kf = floor(start_frame*max_keyframes/max_frames) + 1;
-		end_kf = floor(end_frame*max_keyframes/max_frames);
+        %start_kf = floor(start_frame*max_keyframes/max_frames) + 1;
+		%end_kf = floor(end_frame*max_keyframes/max_frames);
 		
-		fprintf(' [%d --> %d --> %d] Extracting & encoding for [%s - %d/%d kfs (%d - %d)]...\n', start_seg, ii, end_seg, segment, end_kf - start_kf + 1, max_keyframes, start_kf, end_kf);
+		%fprintf(' [%d --> %d --> %d] Extracting & encoding for [%s - %d/%d kfs (%d - %d)]...\n', start_seg, ii, end_seg, segment, end_kf - start_kf + 1, max_keyframes, start_kf, end_kf);
+        fprintf(' [%d/%d] Extracting & encoding for %s...\n', i, length(metadata.videos), video_name);
 		
         code = [];
-		for jj = start_kf:end_kf,
+		%for jj = start_kf:end_kf,
+        for jj = 1: length(kfs),
 			if ~mod(jj, 10),
 				fprintf('%d ', jj);
 			end
@@ -102,16 +119,18 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
 				continue;
 			end
 			
-			[frames, descrs] = sift_extract_features( im, sift_algo, param )
+			[frames, descrs] = sift_extract_features( img_path, sift_algo, param )
             
             % if more than 50% of points are empty --> possibley empty image
+            % trangnt remove all column 0
+            % descrs = descrs(:,any(descrs));
             if sum(all(descrs == 0, 1)) > 0.5*size(descrs, 2),
                 warning('Maybe blank image...[%s]. Skipped!\n', img_name);
-                continue;
+            %    continue;
             end
 			
 			if spm > 0
-				code_ = sift_encode_spm(size(im), frames, descrs, codebook, kdtree, enc_type);
+				code_ = sift_encode_spm(enc_type,size(im), frames, descrs, codebook, kdtree);
 			else
 				code_ = kcb_encode(descrs, codebook, kdtree);	
 			end
@@ -123,7 +142,7 @@ function [ output_args ] = sift_encode_home( proj_name, kf_dir_name, szPat, code
 		code = mean(code, 2);
                 
         % output code
-        output_vdir = [output_dir, '/', info.video];
+        output_vdir = [output_dir, '/', video_name];
         if ~exist(output_vdir, 'file'),
             mkdir(output_vdir);
         end
@@ -150,3 +169,22 @@ function log (msg)
 	fclose(fh);
 end
 
+function num_frames = get_num_frames(video_file)   
+
+    cmd = sprintf('ffmpeg -i %s 2>&1 | sed -n "s/.*Duration: \\([^,]*\\), .*/\\1/p"', video_file);
+    %cmd = sprintf('ffmpeg -i %s', video_file);
+
+    try
+        [~, duration] = system(cmd);
+    catch
+        
+    end
+
+    info = regexp(strtrim(duration), pattern, 'names');
+
+    t = str2num(info.hh)*3600 + str2num(info.mm)*60 + str2num(info.ss);
+
+    fps = 30; % use old ffmpeg > cannot get fps
+
+    num_frames = floor(t * fps);
+end

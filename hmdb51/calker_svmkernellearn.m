@@ -131,14 +131,14 @@ if balance
 %  balw = 1./balw ;
 %balw(1) = balw(1) * 10000 ;
 	for c=cats
-		svm_opts = [svm_opts sprintf(' -w%d %f', c, balw(find(c==cats)))] ;
+		%svm_opts = [svm_opts sprintf(' -w%d %f', c, balw(find(c==cats)))] ;
 	end	
 end
 
 if weights
 	for c=cats    
-    widx = find(weights(1,:)==c) ;
-		svm_opts = [svm_opts sprintf(' -w%d %g', c, weights(2,widx))] ;
+        widx = find(weights(1,:)==c) ;
+		%svm_opts = [svm_opts sprintf(' -w%d %g', c, weights(2,widx))] ;
 	end	
 end
 
@@ -213,24 +213,46 @@ if cross
     for t = 1:length(val_range)
       switch lower(type)
         case 'c'
-          fprintf('svmkernellearn: setting C to %g\n', val_range(t)) ;
+          %fprintf('svmkernellearn: setting C to %g\n', val_range(t)) ;
           svm_opts_ = [svm_opts sprintf(' -v %d -c %g', ...
                                         cross, val_range(t))] ;
+          %svm_opts_ = sprintf(' -c %f -t 4 -e 0.00001', val_range(t));
         case 'nu'
-          fprintf('svmkernellearn: setting nu to %g\n', val_range(t)) ;
+          %fprintf('svmkernellearn: setting nu to %g\n', val_range(t)) ;
           svm_opts_ = [svm_opts sprintf(' -v %d -nu %g', ...
                                         cross, val_range(t))] ;
       end
       
-      try
-        fprintf('svmkernellearn: svm opts ''%s''\n', svm_opts_) ;
-        res = svmtrain(y(:), [(1:n)' K], svm_opts_) ;
-      catch
-      end
+%      try
+      %fprintf('svmkernellearn: svm opts ''%s''\n', svm_opts_) ;
+      res = svmtrain(y(:), [(1:n)' K], svm_opts_) ;
+      s.x = K;
+      s.y = y;
+      s.lambda = 0.01;
+      s.biasMultiplier = cross;
+      s.maxNumIterations = val_range(t);
+      s.epsilon = 1e-3;
+      sampleX = K;
+      labelY = y;
+      %res = svmtrain(labelY, sampleX, svm_opts_) ;
+      %res = vl_svmtrain(s.x, s.y, s.lambda, ...
+      %                       'Solver', 'sgd', ...
+      %                       'BiasMultiplier', s.biasMultiplier, ...
+      %                       'BiasLearningRate', 1/s.biasMultiplier, ...
+      %                       'MaxNumIterations', s.maxNumIterations, ...
+      %                       'Epsilon', s.epsilon) ;
+      %res = svmtrain(y(:), K(1:n), svm_opts_, 'Autoscale', true, 'Showplot', false) ;
+      %res = svmtrain(y(:), K(1:n),...
+      %           'Autoscale',true, 'Showplot',false, 'Method','LS', ...
+      %           'BoxConstraint',2e-1, 'Kernel_Function','rbf', 'RBF_Sigma',1);
+%     catch
+%          fprintf('Error cho nay ne :<') ;
+%      end
       if isempty(res)
         acc_range(t) = 0 ;
       else
-        acc_range(t) = res ;
+        %acc_range(t) = res.Alpha(t);
+        acc_range(t) = res;
       end
     end
     
@@ -278,7 +300,6 @@ end
 % --------------------------------------------------------------------
 
 if C < 0.0001,
-	C
 	C = 1;
 end
 
@@ -298,13 +319,20 @@ if verb
 end
 
 cl.libsvm_cl = svmtrain(y(:), [(1:n)' K], svm_opts) ;
+%cl.libsvm_cl = svmtrain(y(:), K(1:n),...
+%                 'Autoscale',true, 'Showplot',false, 'Method','LS', ...
+%                 'BoxConstraint',2e-1, 'Kernel_Function','rbf', 'RBF_Sigma',1);
 
 cl.rbf       = rbf ;
 cl.gamma     = gamma ;
 cl.labels    =   cl.libsvm_cl.Label ;
+%cl.labels    =   cl.libsvm_cl.SupportVectors ;
 cl.svind     =   cl.libsvm_cl.SVs ;
+%cl.svind     =   cl.libsvm_cl.SupportVectorIndices ;
 cl.alphay    =   cl.libsvm_cl.sv_coef ;
+%cl.alphay    =   cl.libsvm_cl.Alpha ;
 cl.b         = - cl.libsvm_cl.rho ;
+%cl.b         = - cl.libsvm_cl.Bias ;
 cl.C 		 = C;
 
 % ---------------------------------------------------------------------

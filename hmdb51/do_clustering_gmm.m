@@ -1,4 +1,4 @@
-function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, ldc_pat, num_features, cluster_count, GMM_init)
+function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, cluster_count, GMM_init)
 %DO_CLUSTERING Summary of this function goes here
 %   Detailed explanation goes here
 	
@@ -9,13 +9,13 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, ldc_pat, num_f
     cluster_count = 256;
     %%maxcomps = ceil(cluster_count/4);
 	maxcomps = 0;
-
+    %dimred = end_idx - start_idx + 1;
 	if ~exist('dimred', 'var'),
 		dimred = 0;
 	end
 	
 	if ~exist('num_features', 'var'),
-		num_features = 100000;
+		num_features = 1000000;
 	end
 	
 	if ~exist('cluster_count', 'var'),
@@ -24,10 +24,6 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, ldc_pat, num_f
 	
 	if ~exist('GMM_init', 'var'),
 		GMM_init = 'kmeans';
-    end
-    
-    if ~exist('ldc_pat', 'var'),
-        ldc_pat = 'training';
     end
 	
 	f_selected_feats = sprintf('%s/feature/bow.codebook.devel/%s/data/selected_feats_%d.mat', ...
@@ -52,8 +48,8 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, ldc_pat, num_f
 	
 	feat_dim = size(feats, 1);
 	
-	f_low_proj_matrix = sprintf('%s/feature/bow.codebook.devel/%s/data/lowproj.%s.%d.%d.mat', ...
-		proj_dir, feat_pat, ldc_pat, dimred, feat_dim);
+	f_low_proj_matrix = sprintf('%s/feature/bow.codebook.devel/%s/data/lowproj.%d.%d.mat', ...
+		proj_dir, feat_pat, dimred, feat_dim);
 	
 	low_proj = [];
 	if dimred > 0,
@@ -78,8 +74,8 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, ldc_pat, num_f
 		feat_dim = size(feats, 1);
 	end
 	
-	output_file = sprintf('%s/feature/bow.codebook.devel/%s/data/codebook.gmm.%s.%d.%d.mat', ...
-		proj_dir, feat_pat, ldc_pat, cluster_count, feat_dim);
+	output_file = sprintf('%s/feature/bow.codebook.devel/%s/data/codebook.gmm.%d.%d.mat', ...
+		proj_dir, feat_pat, cluster_count, feat_dim);
 		
 	if exist(output_file),
 		fprintf('File [%s] already exist. skipped!\n', output_file);

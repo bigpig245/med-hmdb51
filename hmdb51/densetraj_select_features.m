@@ -6,7 +6,7 @@ function [ feats ] = densetraj_select_features( descriptor, max_features )
 	
     % parameters
 	if ~exist('max_features', 'var'),
-		max_features = 100000;
+		max_features = 50000;
     end
 	
 	%% event_set = 1: 10ex, 2:100Ex, 3: 130Ex
@@ -18,7 +18,7 @@ function [ feats ] = densetraj_select_features( descriptor, max_features )
 	tic;
 	
     %video_sampling_rate = 1;
-	sample_length = 120; % frames
+	%sample_length = 120; % frames
 	%ensure_coef = 1.1;
 	
 	 %% TODO: using unified metadata
@@ -53,7 +53,7 @@ function [ feats ] = densetraj_select_features( descriptor, max_features )
     %parfor ii = 1:length(selected_videos),
     ii = 1;
     for i = 1:length(metadata.videos),
-        event_name = metadata.classes{i};
+        event_name = metadata.events{i};
         video_name = metadata.videos{i};
         label = metadata.labels{i};
         

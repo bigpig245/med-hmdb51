@@ -3,12 +3,12 @@ function calker_test_kernel(ker, start_split, end_split)
 
     % loading labels
 
-	meta_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/metadata.mat';
+	meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
 	fprintf('--- Loading metadata...\n');
 	metadata = load(meta_file, 'metadata');
 	metadata = metadata.metadata;
 
-	split_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/iccv2013_splits.mat';
+	split_file = '/home/ntrang/project/output/hmdb51/metadata/splits.mat';
 	fprintf('--- Loading splits...\n');
 	splits = load(split_file, 'splits');
 	splits = splits.splits;
@@ -29,7 +29,7 @@ function calker_test_kernel(ker, start_split, end_split)
 		return;
 	end
  
-    n_class = length(metadata.all_classes);
+    n_class = metadata.numclass;
 
 	kerPath = sprintf('%s/kernels/%s', calker_exp_dir, ker.devname);
 	
@@ -69,7 +69,7 @@ function calker_test_kernel(ker, start_split, end_split)
 		[N, Nt] = size(base) ;
 		
 		for jj = 1:n_class,
-			class_name = metadata.all_classes{jj};
+			class_name = metadata.classes{jj};
 			
 			labels = double(all_labels(jj,:));
 			
@@ -84,8 +84,8 @@ function calker_test_kernel(ker, start_split, end_split)
 			
 			fprintf('-- [%d/%d] Testing class ''%s''...\n', jj, n_class, class_name);
 			
-			%[y, acc, dec] = svmpredict(zeros(Nt, 1), [(1:Nt)' base'], class_model.libsvm_cl, '-b 1') ;	
-			[y, acc, dec] = svmpredict(labels', [(1:Nt)' base'], class_model.libsvm_cl, '-b 1') ;	
+			[y, acc, dec] = svmpredict(zeros(Nt, 1), [(1:Nt)' base'], class_model.libsvm_cl, '-b 1') ;	
+			%[y, acc, dec] = svmpredict(labels', [(1:Nt)' base'], class_model.libsvm_cl, '-b 1') ;	
 			fprintf('----- Accuracy: %f \n', acc);
 			
 			split_scores(jj, :) = dec(:, 1)';

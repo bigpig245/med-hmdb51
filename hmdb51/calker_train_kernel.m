@@ -7,7 +7,7 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 	metadata = load(meta_file, 'metadata');
 	metadata = metadata.metadata;
 
-	split_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/iccv2013_splits.mat';
+	split_file = '/home/ntrang/project/output/hmdb51/metadata/splits.mat';
 	fprintf('--- Loading splits...\n');
 	splits = load(split_file, 'splits');
 	splits = splits.splits;
@@ -21,7 +21,7 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 	
 	calker_exp_dir = sprintf('%s/%s/experiments/%s%s', ker.proj_dir, ker.proj_name, ker.feat, ker.suffix);
  
-    n_class = length(metadata.all_classes);
+    n_class = metadata.numclass;
 
 	if ~exist('start_class', 'var'),
 		start_class = 1;
@@ -54,8 +54,9 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 
 		for ii = 1:length(split.train_idx),
 			idx = split.train_idx(ii);
+            classid = metadata.classids(idx);
 			for jj = 1:n_class,
-				if metadata.classids(idx) == jj,
+				if classid == jj,
 					all_labels(jj, ii) = 1;
 				else
 					all_labels(jj, ii) = -1;
@@ -63,8 +64,8 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 			end
 		end
 	
-		parfor kk = start_class:end_class,
-			class_name = metadata.all_classes{kk};
+		for kk = start_class:end_class,
+			class_name = metadata.classes{kk};
 		
 			modelPath = sprintf('%s/%s.%s.%s.model.mat', model_dir, class_name, ker.name, ker.type);
 			
@@ -92,8 +93,11 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 			% test it on train
 			if test_on_train,		
 				
-				scores = svm.alphay' * base(svm.svind, :) + svm.b ;
-				errs = scores .* labels < 0 ;
+				%scores = svm.alphay' * base(svm.svind, :) + svm.b ;
+                basedata = base(svm.svind);
+                scores = svm.alphay' * basedata + svm.b ;
+				%errs = scores .* labels < 0 ;
+                errs = scores * labels;
 				err  = mean(errs) ;
 				selPos = find(labels > 0) ;
 				selNeg = find(labels < 0) ;

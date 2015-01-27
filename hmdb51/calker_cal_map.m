@@ -2,12 +2,12 @@ function calker_cal_map(ker)
 	
 	%videolevel: 1 (default): video-based approach, 0: segment-based approach
 	
-	meta_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/metadata.mat';
+	meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
 	fprintf('--- Loading metadata...\n');
 	metadata = load(meta_file, 'metadata');
 	metadata = metadata.metadata;
 
-	split_file = '/net/per610a/export/das11f/plsang/ucf101/metadata/iccv2013_splits.mat';
+	split_file = '/home/ntrang/project/output/hmdb51/metadata/splits.mat';
 	fprintf('--- Loading splits...\n');
 	splits = load(split_file, 'splits');
 	splits = splits.splits;
@@ -29,7 +29,7 @@ function calker_cal_map(ker)
 	
 	load(scorePath, 'scores');
 
-	n_class = length(metadata.all_classes);
+	n_class = metadata.numclass;
 	
 	results = {};
 	for ss = 1:length(splits),
@@ -44,7 +44,7 @@ function calker_cal_map(ker)
 		
 			this_scores = split_scores(jj, :);
 			
-			class_name = metadata.all_classes{jj};
+			class_name = metadata.classes{jj};
 			
 			fprintf('Scoring for event [%s]...\n', class_name);
 			
@@ -71,6 +71,6 @@ function calker_cal_map(ker)
 		results{ss} = map;
 	end
 	
-	fprintf('Saving...\n');
+	fprintf('Saving...%s\n', mapPath);
 	save(mapPath, 'results');
 end

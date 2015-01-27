@@ -13,13 +13,16 @@ function [ output_args ] = densetraj_do_clustering( descriptor, cluster_count, m
 		app_kmeans = 0;
 	end
 	
-	output_file = sprintf('/net/per610a/export/das11f/plsang/trecvidmed13/feature/bow.codebook.devel/densetrajectory.%s/data/codebook.kmeans.%d.mat', descriptor, cluster_count);
+	%output_file = sprintf('/net/per610a/export/das11f/plsang/trecvidmed13/feature/bow.codebook.devel/densetrajectory.%s/data/codebook.kmeans.%d.mat', descriptor, cluster_count);
+    output_file = sprintf('/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/idensetraj.%s/data/codebook.kmeans.%d.mat', descriptor, cluster_count);
+    
 	if exist(output_file, 'file'),
 		fprintf('File [%s] already exists. skipped!\n', output_file);
 		return;
 	end
 	
-	selected_feat_file = sprintf('/net/per610a/export/das11f/plsang/trecvidmed13/feature/bow.codebook.devel/densetrajectory.%s/data/selected_feats_%d_%d.mat', descriptor, max_features);
+	%selected_feat_file = sprintf('/net/per610a/export/das11f/plsang/trecvidmed13/feature/bow.codebook.devel/densetrajectory.%s/data/selected_feats_%d_%d.mat', descriptor, max_features);
+    selected_feat_file = sprintf('/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/idensetraj.%s/data/selected_feats_%d.mat', descriptor, max_features);
     load(selected_feat_file, 'feats');
   
     maxcomps = ceil(cluster_count/4);

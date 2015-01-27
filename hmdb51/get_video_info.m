@@ -1,9 +1,9 @@
 
 
-function calker_create_database()
+function get_video_info()
 	dataset_dir = '/home/ntrang/project/dataset/hmdb51';
     
-    meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
+    meta_file = '/home/ntrang/project/output/hmdb51/metadata/videoinfos.mat';
     if exist(meta_file, 'file'),
         fprintf('File already exist! Skipped\n');
         return;
@@ -15,12 +15,10 @@ function calker_create_database()
     metadata = struct;
     metadata.videos = {};
     metadata.classes = {};
-    metadata.classids = [];
+    %metadata.classids = [];
     metadata.groups = {};
     metadata.clips = [];
     metadata.labels = {};
-    metadata.labelIdxs = {};
-	metadata.events = {};
     
     for i = 1:length(events),
         
@@ -90,19 +88,16 @@ function calker_create_database()
             end
 
             metadata.videos = [metadata.videos; video_id];
+            metadata.classes = [metadata.classes; event_name];
             metadata.groups = [metadata.groups; info.group];
             metadata.clips = [metadata.clips; str2num(info.clip)];
             metadata.labels = [metadata.labels; video_label];
-            metadata.labelIdxs = [metadata.labelIdxs; video_label];
-            metadata.classids = [metadata.classids; i-2];
-			metadata.events = [metadata.events; event_name];
         end
-        metadata.classes = [metadata.classes; event_name];
         log(sprintf('\tTotal ignore: %d files', ignore_number));
         log(sprintf('\tTotal training: %d files', training_number));
         log(sprintf('\tTotal testing: %d files', testing_number));
     end
-	metadata.numclass = length(events) - 2;
+	
 	%metadata.classNames = classNames;
 	save(meta_file, 'metadata');
 end
