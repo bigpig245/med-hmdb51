@@ -71,14 +71,14 @@ matlabpool open 5;mfcc_select_features('rastamat');matlabpool close;do_clusterin
 // Tạo file database
 Chạy method calker_create_basic_exp để tạo file database, file này chứa gì chịu -_-, đang si nghĩ
 
-// Vào vấn đề chính
+// Begin
 calker_main('hmdb51', 'video-bg', 'idensetraj.mbh', '', 'brush_hair', 'feat_dim', 'ker_type', 'cross');, '--hmdb51-v1.1', 'pool', 5);
 calker_main(proj_name, exp_id, feature_ext, suffix, test_pat, feat_dim, ker_type, cross, open_pool)
 calker_main('hmdb51', 'brush_hair', 'feat_dim', 'cross', ''); // cái này mới đúng chuẩn nè
 
 
 
-// Các vấn đề cần hỏi
+// AAAAAAAAAAAAAAAAAA
 1. Dataset cũ như thế nào nhỉ? Cấu trúc thư mục, tên file, đã chia sẵn bộ training và test chưa? Kiểm tra độ chính xác khi chạy thuật toán như thế nào?
 	- Dataset mới thì đã chia dữ liệu thành các action rồi, tên file dài thòng. Thường mỗi action cho mỗi event có ít nhất 2 video, hiếm lắm mới có action chỉ có 1 video.
 	- Theo các paper chạy dataset này thì có vẻ như họ tự chia dataset theo 30/70.
