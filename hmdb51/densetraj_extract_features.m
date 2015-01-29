@@ -31,8 +31,8 @@ function [ X ] = densetraj_extract_features( video_file, descriptor)
 			start_idx = 1;
 			end_idx = 204;
 		case 'mbh'
-			start_idx = 205;
-			end_idx = 396;
+			start_idx = 242;
+			end_idx = 433;
 		case 'hoghofmbh'
 			start_idx = 1;
 			end_idx = 396;

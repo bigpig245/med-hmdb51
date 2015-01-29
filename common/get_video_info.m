@@ -3,7 +3,7 @@ function feat = get_video_info()
 %   Detailed explanation goes her
     
     % Set up the mpeg audio decode command as a readable streamccc
-    ref_dir = '/home/ntrang/project/dataset/hmdb51/brush_hair';
+    ref_dir = '/home/ntrang/project/dataset/hmdb51';
 	
 	fprintf('Listing...\n');
 	test_video = dir(ref_dir);

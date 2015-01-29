@@ -7,5 +7,5 @@ do
 	cur_dir=$(basename $dir)
 	#
 	echo 'Processing ' $cur_dir
-	./extract-frames.sh $cur_dir 0 200
+	./extract-frames.sh $cur_dir
 done

@@ -56,6 +56,12 @@ do_clustering_gmm('/home/ntrang/project/output/hmdb51','phow.gray.v14.2.sift', 1
 toc;
 sift_encode_fc_home( 'hmdb51', 'video-bg', 'phow', 'gray', 256, 128) // Cái này dành riêng cho sift;
 
+>> Trong hàm sift_select_features đã có gọi tính toán đặc trưng sift rồi tại sao khi encode lại gọi tính lại nữa?
+Việc trích xuất đặc trưng sift rất tốn thời gian nên tại sao lại làm như vậy?
+Đừng có nói là 2 tập khác nhau nghe -_-..............
+Mình cũng chưa hỉu ý nghĩa của mấy cái hàm quỷ quái này là gì nữa trời ạ...
+gyaaaaaaaaaaaa
+
 Không hỉu trích xuất có bị sai hay không mà hiện tại ma trận xuất ra có vẻ không giống với lệnh :'(
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Trích xuất đặc trưng âm thanh
