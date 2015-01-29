@@ -32,7 +32,7 @@ num_video_contains_NaN = 0;
 num_video_all_zero = 0;
 % parfor
 for ii = 1:length(videos), %
-    event_name = metadata.events{ii};
+	event_name = metadata.events{ii};
 	video_name = videos{ii};
 	segment_path = sprintf('%s/%s/%s/%s.mat', fea_dir, ker.feat_raw, event_name, video_name);
 	
@@ -42,9 +42,9 @@ for ii = 1:length(videos), %
 	else
 		code = load(segment_path, 'code');
 		code = code.code;
-    end
+	end
 	
-    codebook_size = size(code, 1);
+	codebook_size = size(code, 1);
 	if codebook_size ~= ker.num_dim,
 		warning('Dimension mismatch [%d-%d-%s]. Skipped !!\n', size(code, 1), ker.num_dim, segment_path);
 		code = zeros(ker.num_dim, 1);
@@ -54,7 +54,7 @@ for ii = 1:length(videos), %
 	if any(isnan(code)),
 		warning('Feature contains NaN [%s]. Skipped !!\n', segment_path);
 		%msg = sprintf('Feature contains NaN [%s]', segment_path);
-        num_video_contains_NaN = num_video_contains_NaN + 1;
+		num_video_contains_NaN = num_video_contains_NaN + 1;
 		code = zeros(ker.num_dim, 1);
 		continue;
 	end
@@ -62,7 +62,7 @@ for ii = 1:length(videos), %
 	% event video contains all zeros --> skip, keep backgroud video
 	if all(code == 0),
 		warning('Feature contains all zeros [%s]. Skipped !!\n', segment_path);
-        num_video_all_zero = num_video_all_zero + 1;
+		num_video_all_zero = num_video_all_zero + 1;
 		continue;
 		
 		selected_idx(ii) = 0;
@@ -79,7 +79,7 @@ for ii = 1:length(videos), %
 		else
 			error('unknown norm!\n');
 		end
-    end
+	end
 	
 	hists(:, ii) =  code;
 	

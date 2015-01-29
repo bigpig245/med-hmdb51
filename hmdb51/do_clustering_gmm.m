@@ -5,11 +5,11 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 	% proj_dir = '/net/per610a/export/das11f/plsang/ucf101'
 	set_env;
 		
-    % ann kmeans parameters
-    cluster_count = 256;
-    %%maxcomps = ceil(cluster_count/4);
+	% ann kmeans parameters
+	cluster_count = 256;
+	%%maxcomps = ceil(cluster_count/4);
 	maxcomps = 0;
-    %dimred = end_idx - start_idx + 1;
+	%dimred = end_idx - start_idx + 1;
 	if ~exist('dimred', 'var'),
 		dimred = 0;
 	end
@@ -24,7 +24,7 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 	
 	if ~exist('GMM_init', 'var'),
 		GMM_init = 'kmeans';
-    end
+	end
 	
 	f_selected_feats = sprintf('%s/feature/bow.codebook.devel/%s/data/selected_feats_%d.mat', ...
 		proj_dir, feat_pat, num_features);
@@ -59,9 +59,9 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 		else
 			fprintf('Calculating pca matrix...!\n');	
 			%low_proj = princomp(feats');
-            low_proj = princomp(feats);
+			low_proj = princomp(feats);
 			%low_proj = low_proj(:, 1:dimred)';
-            low_proj = low_proj(:, 1:dimred);
+			low_proj = low_proj(:, 1:dimred);
 			fprintf('Saving pca matrix...!\n');	
 			save(f_low_proj_matrix, 'low_proj');
 		end
@@ -70,7 +70,7 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 	if ~isempty(low_proj),
 		fprintf('Applying pca matrix ...\n');
 		%feats = low_proj * feats;
-        feats = feats * low_proj;
+		feats = feats * low_proj;
 		feat_dim = size(feats, 1);
 	end
 	
@@ -83,11 +83,11 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 	end
 	
 	feats = single(feats);
-    
-    % in case of cluster_count > x-dimension size of feats, reset cluster_count
-    if cluster_count > size(feats, 2),
-        cluster_count = size(feats, 2);
-    end
+	
+	% in case of cluster_count > x-dimension size of feats, reset cluster_count
+	if cluster_count > size(feats, 2),
+		cluster_count = size(feats, 2);
+	end
 	if isequal(GMM_init, 'kmeans')
 		
 		fprintf('Computing initial means using K-means...\n');
@@ -126,7 +126,7 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 		init_var = [];
 		init_coef = [];
 	end
-    
+	
 	
 	fprintf('Clustering features using GMM...\n');
 
@@ -141,14 +141,12 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 
 	fprintf('Done training codebook!\n');
 	
-    save(output_file, 'codebook', '-v7.3');
+	save(output_file, 'codebook', '-v7.3');
 	
-    elapsed = toc;
+	elapsed = toc;
 	elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');
 	
 	msg = sprintf('Finish running %s(%s, %s, %d). Elapsed time: %s', mfilename, proj_dir, feat_pat, dimred, elapsed_str);
 	logmsg(logfile, msg);
 
-    
 end
-

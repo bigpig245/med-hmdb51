@@ -85,6 +85,7 @@ calker_main('hmdb51', 'brush_hair', 'feat_dim', 'cross', ''); // cái này mới
 	- Về training codebook thì có phải là mỗi codebook sẽ chỉ chứa thông tin của 1 event không thôi hay là chứa hết luôn?
 	- Khi kiểm tra độ chính xác của bộ test thì kiểm tra như thế nào?
 	- Dataset cũ video có vẻ như rất dài, lên đến hơn 400s. Dataset mới video rất ngắn, trung bình từ 2 - 3s, cao nhất là không quá 20s
+	- Mình có được quyền modify database hơm
 2. Luồng của thuật toán?
 	- Trích xuất đặc trưng > Build codebook > Training (libsvm) > Classify
 	- Đầu ra của mỗi bước này là gì?

@@ -1,6 +1,6 @@
 function calker_train_kernel(ker, start_split, end_split, start_class, end_class)
 
-    test_on_train = 1;
+	test_on_train = 1;
 
 	meta_file = '/home/ntrang/project/output/hmdb51/metadata/metadata.mat';
 	fprintf('--- Loading metadata...\n');
@@ -21,7 +21,7 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 	
 	calker_exp_dir = sprintf('%s/%s/experiments/%s%s', ker.proj_dir, ker.proj_name, ker.feat, ker.suffix);
  
-    n_class = metadata.numclass;
+	n_class = metadata.numclass;
 
 	if ~exist('start_class', 'var'),
 		start_class = 1;
@@ -54,7 +54,7 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 
 		for ii = 1:length(split.train_idx),
 			idx = split.train_idx(ii);
-            classid = metadata.classids(idx);
+			classid = metadata.classids(idx);
 			for jj = 1:n_class,
 				if classid == jj,
 					all_labels(jj, ii) = 1;
@@ -81,10 +81,10 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 			
 			fprintf('SVM learning with predefined kernel matrix...\n');
 			svm = calker_svmkernellearn(base, labels,   ...
-							   'type', 'C',        ...
-							   ...%'C', 10,            ...
-							   'verbosity', 0,     ...
-							   ...%'rbf', 1,           ...
+							   'type', 'C',		...
+							   ...%'C', 10,			...
+							   'verbosity', 0,	 ...
+							   ...%'rbf', 1,		   ...
 							   'crossvalidation', 5, ...
 							   'weights', [+1 posWeight ; -1 1]') ;
 
@@ -94,10 +94,10 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 			if test_on_train,		
 				
 				%scores = svm.alphay' * base(svm.svind, :) + svm.b ;
-                basedata = base(svm.svind);
-                scores = svm.alphay' * basedata + svm.b ;
+				basedata = base(svm.svind);
+				scores = svm.alphay' * basedata + svm.b ;
 				%errs = scores .* labels < 0 ;
-                errs = scores * labels;
+				errs = scores * labels;
 				err  = mean(errs) ;
 				selPos = find(labels > 0) ;
 				selNeg = find(labels < 0) ;

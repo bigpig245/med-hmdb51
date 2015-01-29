@@ -1,2 +1,0 @@
-qsub -e /net/per610a/export/das11f/plsang/codes/kaori-secode-med14.2/densetraj_encode_sge/densetraj_encode_sge.error.log -o /dev/null /net/per610a/export/das11f/plsang/codes/kaori-secode-med14.2/densetraj_encode_sge.sh video-bg 6 6
-qsub -e /net/per610a/export/das11f/plsang/codes/kaori-secode-med14.2/densetraj_encode_sge/densetraj_encode_sge.error.log -o /dev/null /net/per610a/export/das11f/plsang/codes/kaori-secode-med14.2/densetraj_encode_sge.sh video-bg 7 7
