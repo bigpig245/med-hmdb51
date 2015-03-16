@@ -57,20 +57,17 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 			fprintf('Loading pca matrix...!\n');	
 			load(f_low_proj_matrix, 'low_proj');
 		else
-			fprintf('Calculating pca matrix...!\n');	
-			%low_proj = princomp(feats');
-			low_proj = princomp(feats);
-			%low_proj = low_proj(:, 1:dimred)';
-			low_proj = low_proj(:, 1:dimred);
-			fprintf('Saving pca matrix...!\n');	
+			fprintf('Calculating pca matrix...!\n');
+			low_proj = princomp(feats');
+			low_proj = low_proj(:, 1:dimred)';
+			fprintf('Saving pca matrix...!\n');
 			save(f_low_proj_matrix, 'low_proj');
 		end
 	end
 	
 	if ~isempty(low_proj),
 		fprintf('Applying pca matrix ...\n');
-		%feats = low_proj * feats;
-		feats = feats * low_proj;
+		feats = low_proj * feats;
 		feat_dim = size(feats, 1);
 	end
 	
@@ -149,4 +146,6 @@ function codebook = do_clustering_gmm(proj_dir, feat_pat, dimred, num_features, 
 	msg = sprintf('Finish running %s(%s, %s, %d). Elapsed time: %s', mfilename, proj_dir, feat_pat, dimred, elapsed_str);
 	logmsg(logfile, msg);
 
+	
 end
+

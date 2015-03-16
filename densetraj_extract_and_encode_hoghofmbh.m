@@ -1,5 +1,5 @@
-%function [code_hoghof, code_mbh] = densetraj_extract_and_encode_hoghofmbh( video_file, codebook_hoghof, low_proj_hoghof, codebook_mbh, low_proj_mbh)
-function [code_mbh] = densetraj_extract_and_encode_hoghofmbh( video_file, codebook_mbh, low_proj_mbh)
+function [code_hoghof, code_mbh] = densetraj_extract_and_encode_hoghofmbh( video_file, codebook_hoghof, low_proj_hoghof, codebook_mbh, low_proj_mbh)
+%function [code_mbh] = densetraj_extract_and_encode_hoghofmbh( video_file, codebook_mbh, low_proj_mbh)
 %EXTRACT_AND_ENCODE Summary of this function goes here
 %   Detailed explanation goes here
 	
@@ -13,102 +13,100 @@ function [code_mbh] = densetraj_extract_and_encode_hoghofmbh( video_file, codebo
 	
 	%% fisher initialization
 	fisher_params.grad_weights = false;		% "soft" BOW
-    fisher_params.grad_means = true;		% 1st order
-    fisher_params.grad_variances = true;	% 2nd order
-    fisher_params.alpha = single(1.0);		% power normalization (set to 1 to disable)
-    fisher_params.pnorm = single(0.0);		% norm regularisation (set to 0 to disable)
+	fisher_params.grad_means = true;		% 1st order
+	fisher_params.grad_variances = true;	% 2nd order
+	fisher_params.alpha = single(1.0);		% power normalization (set to 1 to disable)
+	fisher_params.pnorm = single(0.0);		% norm regularisation (set to 0 to disable)
 	
-	%cpp_handle_hoghof = mexFisherEncodeHelperSP('init', codebook_hoghof, fisher_params);
+	cpp_handle_hoghof = mexFisherEncodeHelperSP('init', codebook_hoghof, fisher_params);
 	cpp_handle_mbh = mexFisherEncodeHelperSP('init', codebook_mbh, fisher_params);
 	
-    % Set up the mpeg audio decode command as a readable stream
-    % cmd = [densetraj, ' ', video_file, ' -S ', num2str(start_frame), ' -E ', num2str(end_frame)];
+	% Set up the mpeg audio decode command as a readable stream
+	% cmd = [densetraj, ' ', video_file, ' -S ', num2str(start_frame), ' -E ', num2str(end_frame)];
 	cmd = [densetraj, ' ''', video_file, ''''];
 
-    % open pipe
-    p = popenr(cmd);
+	% open pipe
+	p = popenr(cmd);
 
-    if p < 0
+	if p < 0
 		error(['Error running popenr(', cmd,')']);
-    end
+	end
 	
-	%start_idx_hoghof = 1;
-	%end_idx_hoghof = 204;
+	start_idx_hoghof = 41;
+	end_idx_hoghof = 244;
 	
-	start_idx_mbh = 205;
-    %start_idx_mbh = 269;
-	end_idx_mbh = 396;
+	start_idx_mbh = 245;
+	end_idx_mbh = 436;
 	
-	%hoghof_dim = 204;
+	hoghof_dim = 204;
 	mbh_dim = 192;
-    %mbh_dim = 128; %Vi giam chieu xuong con 128 nen cung phai chuyen doi lai start index
-	full_dim = 396;		
+	full_dim = 436;		
 	
-    BLOCK_SIZE = 50000;                          % initial capacity (& increment size)
-    %listSize = BLOCK_SIZE;                      % current list capacity
-	%X_HOGHOF = zeros(hoghof_dim, BLOCK_SIZE);
+	BLOCK_SIZE = 50000;						% initial capacity (& increment size)
+	%listSize = BLOCK_SIZE;					% current list capacity
+	X_HOGHOF = zeros(hoghof_dim, BLOCK_SIZE);
 	X_MBH = zeros(mbh_dim, BLOCK_SIZE);
-    %X = zeros(full_dim, BLOCK_SIZE);
-    listPtr = 1;
-    
-    %tic
-    
-    while true,
+	%X = zeros(full_dim, BLOCK_SIZE);
+	listPtr = 1;
+	
+	%tic
+	
+	while true,
 
-      % Get the next chunk of data from the process
-      Y = popenr(p, full_dim, 'float');
-	  
-      if isempty(Y), break; end;
+	% Get the next chunk of data from the process
+	Y = popenr(p, full_dim, 'float');
+	
+	if isempty(Y), break; end;
 
-	  if length(Y) ~= full_dim,
+	if length(Y) ~= full_dim,
 			msg = ['wrong dimension [', num2str(length(Y)), '] when running [', cmd, '] at ', datestr(now)];
 			logmsg(logfile, msg);
-			continue;                                    
-	  end
-	  
-      %X = [X Y(8:end)]; % discard first 7 elements
-      %X(:, listPtr) = Y(start_idx:end_idx);
-	  %X_HOGHOF(:, listPtr) = Y(start_idx_hoghof:end_idx_hoghof);
-	  X_MBH(:, listPtr) = Y(start_idx_mbh:end_idx_mbh);
-      listPtr = listPtr + 1; 
-      
-      if listPtr > BLOCK_SIZE,
-               
-		%mexFisherEncodeHelperSP('accumulate', cpp_handle_hoghof, single(low_proj_hoghof * X_HOGHOF));
+			continue;									
+	end
+	
+	%X = [X Y(8:end)]; % discard first 7 elements
+	%X(:, listPtr) = Y(start_idx:end_idx);
+	X_HOGHOF(:, listPtr) = Y(start_idx_hoghof:end_idx_hoghof);
+	X_MBH(:, listPtr) = Y(start_idx_mbh:end_idx_mbh);
+	listPtr = listPtr + 1; 
+	
+	if listPtr > BLOCK_SIZE,
+			 
+		mexFisherEncodeHelperSP('accumulate', cpp_handle_hoghof, single(low_proj_hoghof * X_HOGHOF));
 		
 		mexFisherEncodeHelperSP('accumulate', cpp_handle_mbh, single(low_proj_mbh * X_MBH));
 		
 		listPtr = 1;
-	    %X_HOGHOF(:,:) = 0;
+		X_HOGHOF(:,:) = 0;
 		X_MBH(:,:) = 0;
-          
-      end
-    
-    end
+		
+	end
+	
+	end
 
-    if (listPtr > 1)
-        
-        %X_HOGHOF(:, listPtr:end) = [];   % remove unused slots
+	if (listPtr > 1)
+		
+		X_HOGHOF(:, listPtr:end) = [];   % remove unused slots
 		
 		X_MBH(:, listPtr:end) = [];   % remove unused slots
-        
-		%mexFisherEncodeHelperSP('accumulate', cpp_handle_hoghof, single(low_proj_hoghof * X_HOGHOF));
+		
+		mexFisherEncodeHelperSP('accumulate', cpp_handle_hoghof, single(low_proj_hoghof * X_HOGHOF));
 		
 		mexFisherEncodeHelperSP('accumulate', cpp_handle_mbh, single(low_proj_mbh * X_MBH));
 		
-    end
-    
-	%code_hoghof = mexFisherEncodeHelperSP('getfk', cpp_handle_hoghof);
+	end
+	
+	code_hoghof = mexFisherEncodeHelperSP('getfk', cpp_handle_hoghof);
 	code_mbh = mexFisherEncodeHelperSP('getfk', cpp_handle_mbh);
-    
-	%mexFisherEncodeHelperSP('clear', cpp_handle_hoghof);
+	
+	mexFisherEncodeHelperSP('clear', cpp_handle_hoghof);
 	mexFisherEncodeHelperSP('clear', cpp_handle_mbh);
 	
 	% power normalization (with alpha = 0.5) 		
-	%code_hoghof = sign(code_hoghof) .* sqrt(abs(code_hoghof));    
-	code_mbh = sign(code_mbh) .* sqrt(abs(code_mbh));    
-    % Close pipe
+	code_hoghof = sign(code_hoghof) .* sqrt(abs(code_hoghof));	
+	code_mbh = sign(code_mbh) .* sqrt(abs(code_mbh));	
+	% Close pipe
 	
-    popenr(p, -1);
+	popenr(p, -1);
 
 end

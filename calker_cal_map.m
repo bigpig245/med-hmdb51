@@ -19,9 +19,9 @@ function calker_cal_map(ker)
 	fprintf('Scoring for feature %s...\n', ker.name);
 
 	
-	scorePath = sprintf('%s/scores/%s.scores.mat', calker_exp_dir, ker.name);
+	scorePath = sprintf('%s/scores/%s.%s.scores.mat', calker_exp_dir, ker.name, ker.type);
 	
-	mapPath = sprintf('%s/scores/%s.map.mat', calker_exp_dir, ker.name);
+	mapPath = sprintf('%s/scores/%s.%s.map.mat', calker_exp_dir, ker.name, ker.type);
     
 	if ~checkFile(scorePath), 
 		error('File not found!! %s \n', scorePath);

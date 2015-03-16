@@ -26,6 +26,12 @@ function calker_cal_kernel(ker)
 		elseif  strcmp(ker.type, 'echi2'),
 			fprintf('Calculating echi2 kernel...\n');
 			ker.matrix = vl_alldist2(hists, 'chi2') ;
+		elseif  strcmp(ker.type, 'l2'),
+			fprintf('Calculating l2 kernel...\n');
+			ker.matrix = vl_alldist2(hists, 'l2') ;
+		elseif  strcmp(ker.type, 'l1'),
+			fprintf('Calculating l1 kernel...\n');
+			ker.matrix = vl_alldist2(hists, 'l1') ;
 		end	
 		
 		fprintf('\tSaving kernel ''%s''.\n', dist_Path) ;

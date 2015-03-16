@@ -1,12 +1,11 @@
 %function calker_main(feature_ext, feat_dim, ker_type, suffix, open_pool, start_split, end_split, start_class, end_class)
-function calker_main(feature_ext, feat_dim, ker_type, suffix)
+function calker_main(feature_ext, feat_dim, feat_norm, ker_type, suffix)
 
 proj_name = 'hmdb51';
 
-%addpath('/home/ntrang/project/tools/kaori-secode-calker-v7.2-master/support');
 addpath('/home/ntrang/project/tools/libsvm-3.18/matlab');
 addpath('/home/ntrang/project/tools/libsvm-3.18');
-%addpath('/home/ntrang/project/tools/vlfeat-0.9.19-bin/vlfeat-0.9.19/toolbox');
+addpath('/home/ntrang/project/tools/vlfeat-0.9.19-bin/vlfeat-0.9.19/toolbox');
 
 % run vl_setup with no prefix
 % vl_setup('noprefix');
@@ -46,7 +45,7 @@ if isempty(strfind(suffix, '-hmdb')),
 	warning('**** Suffix does not contain hmdb !!!!!\n');
 end
 
-ker = calker_build_kerdb(feature_ext, ker_type, feat_dim, suffix);
+ker = calker_build_kerdb(feature_ext, feat_norm, ker_type, feat_dim, suffix);
 ker.proj_name = proj_name;
 calker_exp_dir = sprintf('%s/%s/experiments/%s%s', ker.proj_dir, ker.proj_name, ker.feat, ker.suffix);
 ker.log_dir = fullfile(calker_exp_dir, 'log');

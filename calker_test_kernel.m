@@ -22,7 +22,7 @@ function calker_test_kernel(ker, start_split, end_split)
 
 	calker_exp_dir = sprintf('%s/%s/experiments/%s%s', ker.proj_dir, ker.proj_name, ker.feat, ker.suffix);
  
-	scorePath = sprintf('%s/scores/%s.scores.mat', calker_exp_dir, ker.name);
+	scorePath = sprintf('%s/scores/%s.%s.scores.mat', calker_exp_dir, ker.name, ker.type);
 	
 	if exist(scorePath, 'file'),
 		fprintf('Score file exist!\n');

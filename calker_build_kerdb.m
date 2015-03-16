@@ -1,19 +1,19 @@
 
-function ker = calker_build_kerdb(feature_raw, ker_type, feat_dim, suffix)
+function ker = calker_build_kerdb(feature_raw, feat_norm, ker_type, feat_dim, suffix)
 
 % Build kernel database,
 % call BuildKerDb('baseline'), or BuildKerDb('baseline', 'dense_sift')...
 %
 ker.suffix 	 = suffix;		% suffix used for naming experiment folder
 ker.type     = ker_type ;
-ker.feat_norm = 'l2';
+ker.feat_norm = feat_norm;
 ker.feat_raw = feature_raw;
 feature_ext = [feature_raw, '.', ker.feat_norm];
 
 ker.feat     = feature_ext ;
 ker.fea_fmt  = 'dvf';
-%ker.num_dim = feat_dim; %98304;
-ker.num_dim = 73728;
+ker.num_dim = feat_dim; %98304;
+%ker.num_dim = 65536;
 ker.pyrLevel = [] ;
 ker.histName = [feature_ext '.dev_hists'];
 ker.scaleparamsName = [feature_ext '.scaleparams.' ker_type];
@@ -39,5 +39,5 @@ ker.startG = -12;
 ker.endG = 3;
 ker.stepG = 1;
 
-ker.proj_dir = 'project';
+ker.proj_dir = 'project/output/';
 end

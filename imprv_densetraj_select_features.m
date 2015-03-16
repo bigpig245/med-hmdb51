@@ -25,6 +25,7 @@ function [ feats ] = imprv_densetraj_select_features(descriptor, max_features )
 	fprintf('Loading metadata...\n');
 	load(f_metadata, 'metadata');
 	video_dir = '/home/ntrang/project/dataset/hmdb51/';
+	max_features_per_video = 1000;
 		
 	ii = 1;
 	for i = 1:length(metadata.videos),

@@ -7,7 +7,7 @@ function code = imprv_densetraj_extract_and_encode(descriptor, video_file, codeb
 	configs = set_global_config();
 	logfile = sprintf('%s/%s.log', configs.logdir, mfilename);
 		
-	densetraj = 'LD_PRELOAD=/home/ntrang/usr.local/lib/libstdc++.so /home/ntrang/tools/improved_trajectory_release/release/DenseTrackStab';
+	densetraj = 'LD_PRELOAD=/home/ntrang/usr.local/lib/libstdc++.so /home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
 	
 	%% fisher initialization
 	fisher_params.grad_weights = false;		% "soft" BOW
@@ -38,9 +38,12 @@ function code = imprv_densetraj_extract_and_encode(descriptor, video_file, codeb
 		case 'hoghofmbh'
 			start_idx = 41;
 			end_idx = 436;
+		case 'full'
+			start_idx = 1;
+			end_idx = 436;
 		otherwise
 			error('Unknown descriptor for dense trajectories!!\n');
-	end
+		end
 	
 	feat_dim = end_idx - start_idx + 1;
 	full_dim = 436;
@@ -99,9 +102,6 @@ function code = imprv_densetraj_extract_and_encode(descriptor, video_file, codeb
 	code = mexFisherEncodeHelperSP('getfk', cpp_handle);
 	
 	mexFisherEncodeHelperSP('clear', cpp_handle);
-	
-	% power normalization (with alpha = 0.5) 		
-	code = sign(code) .* sqrt(abs(code));	
 	
 	% Close pipe
 	popenr(p, -1);

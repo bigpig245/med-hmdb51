@@ -10,11 +10,11 @@ function [ X ] = imprv_densetraj_extract_features(video_file, descriptor)
 		descriptor = 'full';
 	end
 	
-	densetraj = 'LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 /home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
+	densetraj = '/home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
 	
 	% Set up the mpeg audio decode command as a readable stream
 
-	cmd = [densetraj, ' ', video_file];
+	cmd = [densetraj, ' ''', video_file, ''''];
 		
 	switch descriptor,
 		case 'hoghof'
@@ -25,6 +25,9 @@ function [ X ] = imprv_densetraj_extract_features(video_file, descriptor)
 			end_idx = 436;
 		case 'hoghofmbh'
 			start_idx = 41;
+			end_idx = 436;
+		case 'full'
+			start_idx = 1;
 			end_idx = 436;
 		otherwise
 			error('Unknown descriptor for dense trajectories!!\n');
