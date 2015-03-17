@@ -49,9 +49,10 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 
 	feat_dim = end_idx - start_idx + 1;
 	full_dim = 436;
+	encode_dim = 65536;
 	
 	BLOCK_SIZE = 50000; % initial capacity (& increment size)
-	X = zeros(feat_dim, BLOCK_SIZE);
+	F = zeros(feat_dim, BLOCK_SIZE);
 	listPtr = 1;
 	
 	%init code
@@ -67,29 +68,28 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 		if length(Y) ~= full_dim,
 				msg = ['wrong dimension [', num2str(length(Y)), '] when running [', cmd, '] at ', datestr(now)];
 				logmsg(logfile, msg);
-				continue;									
+				continue;
 		end
 
 		%X = [X Y(8:end)]; % discard first 7 elements
-		X(:, listPtr) = Y(start_idx:end_idx);
+		F(:, listPtr) = Y(start_idx:end_idx);
 		listPtr = listPtr + 1;
 	
 	end
 
 	% pooling with gmp
-	X(:, listPtr:end) = [];   % remove unused slots
-	alpha = solve_gmp(gmp_params.lambda, X', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);
-	phi = X * alpha';
-
-	if (listPtr > 1)	
-		
-		mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * phi));
-		
+	F(:, listPtr:end) = [];   % remove unused slots
+	X = zeros(encode_dim, length(F));
+	for i = 1:length(F),
+		Fi = F(:, i);
+		cpp_handle = mexFisherEncodeHelperSP('init', codebook, fisher_params);
+		mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * Fi));
+		X(:, i) = mexFisherEncodeHelperSP('getfk', cpp_handle);
+		mexFisherEncodeHelperSP('clear', cpp_handle);
 	end
 	
-	code = mexFisherEncodeHelperSP('getfk', cpp_handle);
-	
-	mexFisherEncodeHelperSP('clear', cpp_handle);
+	alpha = solve_gmp(gmp_params.lambda, X', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);
+	code = X * alpha';
 	
 	% power normalization (with alpha = 0.5) 
 	code = sign(code) .* sqrt(abs(code));
