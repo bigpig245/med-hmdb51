@@ -79,13 +79,14 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 
 	% pooling with gmp
 	F(:, listPtr:end) = [];   % remove unused slots
-	X = zeros(encode_dim, length(F));
+	X = 		zeros(encode_dim, length(F));
 	for i = 1:length(F),
 		Fi = F(:, i);
 		cpp_handle = mexFisherEncodeHelperSP('init', codebook, fisher_params);
 		mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * Fi));
-		X(:, i) = mexFisherEncodeHelperSP('getfk', cpp_handle);
+		Xi = mexFisherEncodeHelperSP('getfk', cpp_handle);
 		mexFisherEncodeHelperSP('clear', cpp_handle);
+		X(:, i) = Xi/norm(Xi);
 	end
 	
 	alpha = solve_gmp(gmp_params.lambda, X', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);

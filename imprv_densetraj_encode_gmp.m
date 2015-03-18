@@ -70,10 +70,11 @@ function imprv_densetraj_encode_gmp(descriptor, kernel, index)
 	low_proj_ = load(low_proj_file, 'low_proj');
 	low_proj = low_proj_.low_proj;
 	
-	
+	samples = [48,18,44,51,46,45,21,9,33,7];
 	for i = index:length(metadata.videos),
 		event_name = metadata.events{i};
 		video_name = metadata.videos{i};
+		classid = metadata.classids(i);
 		
 		video_file = sprintf('%s/%s/%s.avi', video_dir, event_name, video_name);
 		
@@ -84,12 +85,20 @@ function imprv_densetraj_encode_gmp(descriptor, kernel, index)
 			continue;
 		end
 		
+		if isempty(find(samples == classid)),
+			fprintf('[%s] belongs to [%s] is not in samples, ignore!!\n', video_name, event_name);
+			continue;
+		end
+		
 		fprintf(' [%d] Extracting & Encoding for [%s]\n', i, video_name);
 		
 		code = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj); %important
 		
 		% power normalization (with alpha = 0.5)
 		code = sign(code) .* sqrt(abs(code));
+		elapsed = toc;
+		elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');
+		fprintf('Finish running %s. Elapsed time: %s\n', video_name, elapsed_str);
 		par_save(output_file, code, 1); 
 
 	end
