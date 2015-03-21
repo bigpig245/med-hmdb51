@@ -2,7 +2,7 @@
 function [result] = is_diagonal(matrix)
 	result = 1;
 	if ~isempty(matrix),
-		R = size(matrix, 1);
+		R = fix(size(matrix, 1)/2);
 		C = size(matrix, 2);
 		for i = 1:R,
 			for j = 1:C,
