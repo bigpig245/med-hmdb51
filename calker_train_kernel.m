@@ -37,6 +37,7 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 	dist_Path = sprintf('%s.distmatrix.%s.mat', kerPath, ker.type);
 	fprintf('--- Loading dist matrix...\n');
 	kernels_ = load(dist_Path);
+	samples = [48,18,44,51,46,45,21,9,33,7];
 	
 	for ss=start_split:end_split,
 		
@@ -65,7 +66,13 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 		end
 	
 		for kk = start_class:end_class,
+	
 			class_name = metadata.classes{kk};
+			if isempty(find(samples == kk)),
+				fprintf('[%s] is not in samples, ignore!!\n', class_name);
+				continue;
+			end
+			
 		
 			modelPath = sprintf('%s/%s.%s.%s.model.mat', model_dir, class_name, ker.name, ker.type);
 			

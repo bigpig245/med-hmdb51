@@ -52,7 +52,8 @@ elseif (strcmp(kernel,'linear'))
     
     nse = lambda*eye(N);
     e   = ones(N,1);
-    b   = (k*e).^calpha;
+    %b   = (k*e).^calpha;
+    b   = 1;
 elseif (strcmp(kernel,'absLinear'))
     [N,~] = size(x);
     k     = x*x';

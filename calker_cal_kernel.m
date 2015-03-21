@@ -43,5 +43,5 @@ function calker_cal_kernel(ker)
 end
 
 function par_save( output_file, ker )
-	ssave(output_file, '-STRUCT', 'ker', '-v7.3');
+	save(output_file, '-STRUCT', 'ker', '-v7.3');
 end

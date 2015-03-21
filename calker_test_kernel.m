@@ -29,13 +29,14 @@ function calker_test_kernel(ker, start_split, end_split)
 		return;
 	end
  
-    n_class = metadata.numclass;
+	n_class = metadata.numclass;
 
 	kerPath = sprintf('%s/kernels/%s', calker_exp_dir, ker.devname);
 	
 	dist_Path = sprintf('%s.distmatrix.%s.mat', kerPath, ker.type);
 	fprintf('--- Loading dist matrix...\n');
 	kernels_ = load(dist_Path);
+	samples = [48,18,44,51,46,45,21,9,33,7];
 	
 	scores = {};
 	
@@ -67,9 +68,15 @@ function calker_test_kernel(ker, start_split, end_split)
 		split_scores = zeros(n_class, length(split.test_idx));
 		
 		[N, Nt] = size(base) ;
+
+		kk = 1;
 		
 		for jj = 1:n_class,
 			class_name = metadata.classes{jj};
+			if isempty(find(samples == jj)),
+				fprintf('[%s] is not in samples, ignore!!\n', class_name);
+				continue;
+			end
 			
 			labels = double(all_labels(jj,:));
 			
@@ -88,7 +95,8 @@ function calker_test_kernel(ker, start_split, end_split)
 			%[y, acc, dec] = svmpredict(labels', [(1:Nt)' base'], class_model.libsvm_cl, '-b 1') ;	
 			fprintf('----- Accuracy: %f \n', acc);
 			
-			split_scores(jj, :) = dec(:, 1)';
+			split_scores(kk, :) = dec(:, 1)';
+			kk = kk + 1;
 		end
 		
 		scores{ss} = split_scores;

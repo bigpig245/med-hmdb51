@@ -29,6 +29,8 @@ function calker_cal_map(ker)
 	
 	load(scorePath, 'scores');
 
+	samples = [48,18,44,51,46,45,21,9,33,7];
+
 	n_class = metadata.numclass;
 	
 	results = {};
@@ -39,12 +41,15 @@ function calker_cal_map(ker)
 		
 		split_scores = scores{ss};
 		
-		map = zeros(n_class + 1, 1);
+		map = zeros(size(samples, 2) + 1, 1);
+		kk = 1;
 		for jj = 1:n_class,
-		
-			this_scores = split_scores(jj, :);
-			
 			class_name = metadata.classes{jj};
+			if isempty(find(samples == jj)),
+				fprintf('[%s] is not in samples, ignore!!\n', class_name);
+				continue;
+			end
+			this_scores = split_scores(kk, :);
 			
 			fprintf('Scoring for event [%s]...\n', class_name);
 			
@@ -58,15 +63,15 @@ function calker_cal_map(ker)
 			
 			sorted_idx = sort(rank_idx);	
 			ap = 0;
-			for kk = 1:length(sorted_idx), 
-				ap = ap + kk/sorted_idx(kk);
+			for ll = 1:length(sorted_idx), 
+				ap = ap + ll/sorted_idx(ll);
 			end
 			ap = ap/length(sorted_idx);
-			map(jj) = ap;
-			
+			map(kk) = ap;
+			kk = kk + 1;
 		end
 		
-		map(n_class + 1) = mean(map(1:n_class));
+		map(kk) = mean(map(1:kk-1));
 		
 		results{ss} = map;
 	end

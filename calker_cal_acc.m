@@ -19,14 +19,16 @@ function calker_cal_acc(ker)
 	fprintf('Scoring for feature %s...\n', ker.name);
 
 	
-	scorePath = sprintf('%s/scores/%s.scores.mat', calker_exp_dir, ker.name);
+	scorePath = sprintf('%s/scores/%s.%s.scores.mat', calker_exp_dir, ker.name, ker.type);
 	
-	accPath = sprintf('%s/scores/%s.accuracy.mat', calker_exp_dir, ker.name);
+	accPath = sprintf('%s/scores/%s.%s.accuracy.mat', calker_exp_dir, ker.name, ker.type);
     
 	if ~checkFile(scorePath), 
 		error('File not found!! %s \n', scorePath);
 	end
 	
+	samples = [48,18,44,51,46,45,21,9,33,7];
+
 	load(scorePath, 'scores');
 
 	n_class = metadata.numclass;
@@ -43,8 +45,13 @@ function calker_cal_acc(ker)
 		[~, predict_label] = max(split_scores);
 		
 		acc = zeros(n_class + 1, 1);
+		kk = 1;
 		for jj = 1:n_class,
 			class_name = metadata.classes{jj};
+			if isempty(find(samples == jj)),
+				fprintf('[%s] is not in samples, ignore!!\n', class_name);
+				continue;
+			end
 			
 			all_test_class_idx = metadata.classids(split.test_idx);
 			
@@ -52,7 +59,8 @@ function calker_cal_acc(ker)
 			
 			test_class_pre_label = predict_label(test_class_idx);
 			
-			acc(jj) = length(find(test_class_pre_label == jj))/length(test_class_idx);
+			acc(kk) = length(find(test_class_pre_label == jj))/length(test_class_idx);
+			kk = kk + 1;
 			
 		end
 		
