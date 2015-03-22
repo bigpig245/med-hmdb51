@@ -1,6 +1,7 @@
 % a little banana but let it be -_-
 function [result] = is_diagonal(matrix)
 	result = 1;
+	matrix = matrix * matrix';
 	if ~isempty(matrix),
 		R = fix(size(matrix, 1)/2);
 		C = size(matrix, 2);
