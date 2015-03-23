@@ -30,11 +30,17 @@ hists = zeros(ker.num_dim, length(videos));
 selected_idx = ones(1, length(videos));
 num_video_contains_NaN = 0;
 num_video_all_zero = 0;
+samples = [48,18,44,51,46,45,21,9,33,7];
 % parfor
 for ii = 1:length(videos), %
 	event_name = metadata.events{ii};
 	video_name = videos{ii};
 	segment_path = sprintf('%s/%s/%s/%s.mat', fea_dir, ker.feat_raw, event_name, video_name);
+	classid = metadata.classids(ii);
+	if isempty(find(samples == classid)),
+		fprintf('[%s] is not in samples, ignore!!\n', event_name);
+		continue;
+	end
 	
 	if ~exist(segment_path),
 		warning('File [%s] does not exist!\n', segment_path);

@@ -35,6 +35,6 @@ end
 
 % solve gmp:
 w = (k + nse)\b;
-w = w'/sum(w);
+w = w';%/sum(w);
 end
 

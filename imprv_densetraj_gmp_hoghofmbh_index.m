@@ -13,7 +13,7 @@ function imprv_densetraj_gmp_hoghofmbh_index(index, kernel)
 	if ~exist('kernel', 'var'),
 		kernel = 'linear';
 	end
-	gmp_params.lambda = 1e-4;
+	gmp_params.lambda = 1e3;
 	gmp_params.calpha = 0;
 	gmp_params.sigma = 1;
 	gmp_params.kernel = kernel;
