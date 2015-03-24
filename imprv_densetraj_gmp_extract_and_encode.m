@@ -16,6 +16,7 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 	fisher_params.pnorm = single(0.0);		% norm regularisation (set to 0 to disable)
 
 	%% gmp initialization
+	%%% em fix lambda 1e^-4 đi. lamda này quá lớn (tương đương trường hợp sum-pooling như trong paper)
 	gmp_params.lambda = 1e3;
 	gmp_params.calpha = 0;
 	gmp_params.sigma = 1;
@@ -86,6 +87,9 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 		X(:, i) = mexFisherEncodeHelperSP('getfk', cpp_handle);
 		mexFisherEncodeHelperSP('clear', cpp_handle);
 		X(:, i) = X(:, i)/norm(X(:, i));
+		
+		%%% anh thay F(:, i) bằng số random rand(204, 1) thì kết quả X(:, i) rất sparse (số lượng phần tử khác 0 < 256)
+		%%% em debug lại chỗ này đi nhé!!
 	end
 	alpha = solve_gmp(gmp_params.lambda, X', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);
 	code = X * alpha';
