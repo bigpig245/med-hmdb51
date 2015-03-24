@@ -94,8 +94,12 @@ function imprv_densetraj_encode_gmp(descriptor, kernel, index)
 		
 		code = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj); %important
 		
+		%%% trong hàm imprv_densetraj_gmp_extract_and_encode đã dùng power norm rồi, sao còn dùng ở đây nữa?!
 		% power normalization (with alpha = 0.5)
 		code = sign(code) .* sqrt(abs(code));
+		
+		
+		
 		elapsed = toc;
 		elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');
 		fprintf('Finish running %s. Elapsed time: %s\n', video_name, elapsed_str);
