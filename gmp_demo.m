@@ -52,8 +52,7 @@ elseif (strcmp(kernel,'linear'))
     
     nse = lambda*eye(N);
     e   = ones(N,1);
-    %b   = (k*e).^calpha;
-    b   = 1;
+    b   = (k*e).^calpha;
 elseif (strcmp(kernel,'absLinear'))
     [N,~] = size(x);
     k     = x*x';
@@ -131,4 +130,3 @@ set(gca,'FontSize',fontsz);
 set(findall(gca, 'String', '  0.2', '-or','String','  0.4', '-or','String','  0.6', '-or','String','  0.8', '-or','String','  1') ,'String', ' ');
 title(sprintf('lambda = %4.2e',lambda));
 end
-

@@ -47,7 +47,7 @@ function calker_cal_map(ker)
 			class_name = metadata.classes{jj};
 			if isempty(find(samples == jj)),
 				fprintf('[%s] is not in samples, ignore!!\n', class_name);
-				continue;
+				%continue;
 			end
 			this_scores = split_scores(kk, :);
 			

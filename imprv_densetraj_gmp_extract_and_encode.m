@@ -1,4 +1,4 @@
-function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj)
+function [ code_gmp, code_sump ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj)
 	
 	set_env;
 
@@ -17,12 +17,10 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 
 	%% gmp initialization
 	%%% em fix lambda 1e^-4 đi. lamda này quá lớn (tương đương trường hợp sum-pooling như trong paper)
-	gmp_params.lambda = 1e3;
+	gmp_params.lambda = 1e-4;
 	gmp_params.calpha = 0;
 	gmp_params.sigma = 1;
 	gmp_params.kernel = kernel;
-	
-	cpp_handle = mexFisherEncodeHelperSP('init', codebook, fisher_params);
 	
 	% Set up the mpeg audio decode command as a readable stream
 	cmd = [densetraj, ' ''', video_file, ''''];
@@ -56,9 +54,6 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 	F = zeros(feat_dim, BLOCK_SIZE);
 	listPtr = 1;
 	
-	%init code
-	code = zeros(size(codebook, 2), 1);
-	
 	while true,
 
 		% Get the next chunk of data from the process
@@ -91,13 +86,14 @@ function [ code ] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, v
 		%%% anh thay F(:, i) bằng số random rand(204, 1) thì kết quả X(:, i) rất sparse (số lượng phần tử khác 0 < 256)
 		%%% em debug lại chỗ này đi nhé!!
 	end
-	alpha = solve_gmp(gmp_params.lambda, X', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);
-	code = X * alpha';
-	
-	% power normalization (with alpha = 0.5) 
-	code = sign(code) .* sqrt(abs(code));
-	% Close pipe
-	
-	popenr(p, -1);
 
+	alpha = solve_gmp(gmp_params.lambda, X', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);
+	code_gmp = X * alpha';
+	code_sump = sum(X,2);
+	%nowstr = datestr(now, 'yyyymmddHHMMSS');
+	%phi_sum_file = ['~/', nowstr, 'phi_sum_', '.mat'];
+	%phi_file = ['~/', nowstr, 'phi_', nowstr, '.mat'];
+	%par_save(phi_sum_file, sum(X,2), 1);
+	%par_save(phi_file, code, 1);
+	popenr(p, -1);
 end

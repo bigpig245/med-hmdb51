@@ -50,15 +50,23 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	codebook_gmm_size = 256; %cluster_count
 
 	feature_ext_fc = sprintf('imprvdensetraj.%s.%s.cb%d.fc', descriptor, kernel, codebook_gmm_size);
+	feature_ext_sum = sprintf('imprvdensetraj.%s.%s.cb%d.fc', descriptor, 'sump', codebook_gmm_size);
 	if dimred > 0,
 		feature_ext_fc = sprintf('imprvdensetraj.%s.%s.cb%d.fc.pca', descriptor, kernel, codebook_gmm_size);
+		feature_ext_sum = sprintf('imprvdensetraj.%s.%s.cb%d.fc.pca', descriptor, 'sump', codebook_gmm_size);
 	end
 
 	output_dir_fc = sprintf('%s/%s', fea_dir, feature_ext_fc);
+	output_dir_sum = sprintf('%s/%s', fea_dir, feature_ext_sum);
 	
 	if ~exist(output_dir_fc, 'file'),
 		mkdir(output_dir_fc);
 		change_perm(output_dir_fc);
+	end
+
+	if ~exist(output_dir_sum, 'file'),
+		mkdir(output_dir_sum);
+		change_perm(output_dir_sum);
 	end
 	
 	% loading gmm codebook
@@ -79,6 +87,7 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	video_file = sprintf('%s/%s/%s.avi', video_dir, event_name, video_name);
 	
 	output_file = sprintf('%s/%s/%s.mat', output_dir_fc, event_name, video_name);
+	output_sum_file = sprintf('%s/%s/%s.mat', output_dir_sum, event_name, video_name);
 	
 	if exist(output_file, 'file'),
 		fprintf('File [%s] already exist. Skipped!!\n', output_file);
@@ -92,19 +101,17 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	
 	fprintf(' [%d] Extracting & Encoding for [%s]\n', index, video_name);
 	
-	code = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj); %important
+	[code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj); %important
 	
 	% power normalization (with alpha = 0.5)
-	code = sign(code) .* sqrt(abs(code));
+	code = sign(code_gmp) .* sqrt(abs(code_gmp));
+	par_save(output_file, code, 1);
+
+	code = sign(code_sump) .* sqrt(abs(code_sump));
+	par_save(output_sum_file, code, 1); 
+
 	elapsed = toc;
 	elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');
-	fprintf('Finish running %s. Elapsed time: %s\n', video_name, elapsed_str);
-	par_save(output_file, code, 1); 
-
-	%end
-	
-	%elapsed = toc;
-	%elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');
 	msg = sprintf('Finish running %s. Elapsed time: %s', mfilename, elapsed_str);
 	logmsg(logfile, msg);
 end

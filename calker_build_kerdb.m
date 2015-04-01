@@ -1,9 +1,6 @@
-
 function ker = calker_build_kerdb(feature_raw, feat_norm, ker_type, feat_dim, suffix)
 
 % Build kernel database,
-% call BuildKerDb('baseline'), or BuildKerDb('baseline', 'dense_sift')...
-%
 ker.suffix 	 = suffix;		% suffix used for naming experiment folder
 ker.type     = ker_type ;
 ker.feat_norm = feat_norm;

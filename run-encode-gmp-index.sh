@@ -1,6 +1,4 @@
 cd ~/project/codes/hmdb51
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',600)" & 
-wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',601)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',602)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',603)" & 
@@ -124,7 +122,7 @@ wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',697)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',698)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',699)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',800)" & 
+/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',700)" & 
 wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',801)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',802)" & 
@@ -249,7 +247,7 @@ wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',897)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',898)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',899)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',1700)" & 
+/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',900)" & 
 wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',1701)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',1702)" & 
@@ -374,7 +372,7 @@ wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',1797)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',1798)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',1799)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',2000)" & 
+/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',1800)" & 
 wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',2001)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',2002)" & 
@@ -499,7 +497,7 @@ wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',2097)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',2098)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',2099)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',3200)" & 
+/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',2100)" & 
 wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',3201)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',3202)" & 
@@ -624,7 +622,7 @@ wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',3297)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',3298)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',3299)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4300)" & 
+/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',3300)" & 
 wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4301)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4302)" & 
@@ -999,253 +997,6 @@ wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4597)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4598)" & 
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4599)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4700)" & 
+/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4600)" & 
 wait
 /usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4701)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4702)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4703)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4704)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4705)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4706)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4707)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4708)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4709)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4710)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4711)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4712)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4713)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4714)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4715)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4716)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4717)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4718)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4719)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4720)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4721)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4722)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4723)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4724)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4725)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4726)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4727)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4728)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4729)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4730)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4731)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4732)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4733)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4734)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4735)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4736)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4737)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4738)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4739)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4740)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4741)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4742)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4743)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4744)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4745)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4746)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4747)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4748)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4749)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4750)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4751)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4752)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4753)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4754)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4755)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4756)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4757)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4758)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4759)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4760)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4761)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4762)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4763)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4764)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4765)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4766)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4767)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4768)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4769)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4770)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4771)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4772)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4773)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4774)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4775)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4776)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4777)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4778)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4779)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4780)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4781)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4782)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4783)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4784)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4785)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4786)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4787)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4788)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4789)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4790)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4791)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4792)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4793)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4794)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4795)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4796)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4797)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4798)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',4799)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5000)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5001)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5002)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5003)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5004)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5005)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5006)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5007)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5008)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5009)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5010)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5011)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5012)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5013)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5014)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5015)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5016)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5017)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5018)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5019)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5020)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5021)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5022)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5023)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5024)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5025)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5026)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5027)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5028)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5029)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5030)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5031)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5032)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5033)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5034)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5035)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5036)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5037)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5038)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5039)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5040)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5041)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5042)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5043)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5044)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5045)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5046)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5047)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5048)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5049)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5050)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5051)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5052)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5053)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5054)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5055)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5056)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5057)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5058)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5059)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5060)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5061)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5062)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5063)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5064)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5065)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5066)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5067)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5068)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5069)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5070)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5071)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5072)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5073)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5074)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5075)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5076)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5077)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5078)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5079)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5080)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5081)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5082)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5083)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5084)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5085)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5086)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5087)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5088)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5089)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5090)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5091)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5092)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5093)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5094)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5095)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5096)" & 
-wait
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5097)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5098)" & 
-/usr/local/MATLAB/MATLAB_Production_Server/R2013a/bin/matlab  -nodisplay -r "imprv_densetraj_encode_gmp_index('hoghof','linear',5099)" & 
