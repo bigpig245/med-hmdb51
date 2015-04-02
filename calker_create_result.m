@@ -80,11 +80,11 @@ function calker_create_result(feature_ext, feat_dim, feat_norm, ker_type, suffix
 			success_idxs = [];
 			for ll = 1:length(rank_idx),
 				video_idx = rank_idx(ll);
-				% if predicted videos is in not events, labeled 0
+				% if predicted video is in not events, labeled 0
 				if isempty(find(gt_idx == video_idx)),
 					labels = [labels;[video_idx, 0]];
 				else
-					% if predicted videos is in events, labeled 1
+					% if predicted video is in events, labeled 1
 					labels = [labels;[video_idx, 1]];
 					success_idxs = [success_idxs; video_idx];
 				end
@@ -92,7 +92,7 @@ function calker_create_result(feature_ext, feat_dim, feat_norm, ker_type, suffix
 			
 			for ll = 1:length(gt_idx),
 				video_idx = gt_idx(ll);
-				% remained videos labeled 2
+				% remained videos are labeled 2
 				if isempty(find(success_idxs == video_idx)),
 					labels = [labels;[video_idx, 2]];
 				end
