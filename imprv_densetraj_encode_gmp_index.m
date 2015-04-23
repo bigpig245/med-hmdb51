@@ -9,8 +9,8 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	
 	configs = set_global_config();
 	logfile = sprintf('%s/%s.log', configs.logdir, mfilename);
-	msg = sprintf('Start running %s', mfilename);
-	logmsg(logfile, msg);
+	%msg = sprintf('Start running %s', mfilename);
+	%logmsg(logfile, msg);
 	change_perm(logfile);
 	tic;
 
@@ -86,7 +86,8 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	
 	video_file = sprintf('%s/%s/%s.avi', video_dir, event_name, video_name);
 	
-	output_file = sprintf('%s/%s/%s.mat', output_dir_fc, event_name, video_name);
+	output_file = sprintf('%s.%d/%s/%s.mat', output_dir_fc, 10, event_name, video_name);
+
 	output_sum_file = sprintf('%s/%s/%s.mat', output_dir_sum, event_name, video_name);
 	
 	if exist(output_file, 'file'),
@@ -104,15 +105,21 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	[code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj); %important
 	
 	% power normalization (with alpha = 0.5)
-	code = sign(code_gmp) .* sqrt(abs(code_gmp));
-	par_save(output_file, code, 1);
+	lambda = 1;
+	for i = 1:size(code_gmp, 2),
+		lambda = lambda * 10;
+		output_file = sprintf('%s.%d/%s/%s.mat', output_dir_fc, lambda, event_name, video_name);
+		code = sign(code_gmp(:,i)) .* sqrt(abs(code_gmp(:,i)));
+		par_save(output_file, code, 1);
+	end
 
 	code = sign(code_sump) .* sqrt(abs(code_sump));
 	par_save(output_sum_file, code, 1); 
 
 	elapsed = toc;
 	elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');
-	msg = sprintf('Finish running %s. Elapsed time: %s', mfilename, elapsed_str);
+	msg = sprintf('Finish running %s. Elapsed time: %s\n', video_name, elapsed_str);
+	fprintf(msg);
 	logmsg(logfile, msg);
 end
 

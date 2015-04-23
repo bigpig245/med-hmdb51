@@ -1,10 +1,12 @@
-function [code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj)
+function [] = test_multiply_matrix(descriptor, video_file)
 	
-	set_env;
+	addpath('/home/ntrang/project/tools/mod-gmm-fisher.git/matlab');
 
-	configs = set_global_config();
-	logfile = sprintf('%s/%s.log', configs.logdir, mfilename);
-	change_perm(logfile);
+	codebook_ = load('/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/imprvdensetraj.hoghof/data/codebook.gmm.256.128.mat', 'codebook');
+	codebook = codebook_.codebook;
+	
+	low_proj_ = load('/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/imprvdensetraj.hoghof/data/lowproj.128.204.mat', 'low_proj');
+	low_proj = low_proj_.low_proj;
 	
 	densetraj = 'LD_PRELOAD=/home/ntrang/usr.local/lib/libstdc++.so /home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
 	
@@ -14,13 +16,6 @@ function [code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descript
 	fisher_params.grad_variances = true;		% 2nd order
 	fisher_params.alpha = single(1.0);		% power normalization (set to 1 to disable)
 	fisher_params.pnorm = single(0.0);		% norm regularisation (set to 0 to disable)
-
-	%% gmp initialization
-	%%% em fix lambda 1e^-4 đi. lamda này quá lớn (tương đương trường hợp sum-pooling như trong paper)
-	gmp_params.lambda = 1e5;
-	gmp_params.calpha = 0;
-	gmp_params.sigma = 1;
-	gmp_params.kernel = kernel;
 	
 	% Set up the mpeg audio decode command as a readable stream
 	cmd = [densetraj, ' ''', video_file, ''''];
@@ -48,12 +43,12 @@ function [code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descript
 
 	feat_dim = end_idx - start_idx + 1;
 	full_dim = 436;
-	encode_dim = 65536;
 	
 	BLOCK_SIZE = 50000; % initial capacity (& increment size)
 	F = zeros(feat_dim, BLOCK_SIZE);
 	listPtr = 1;
 	
+	tic;
 	while true,
 
 		% Get the next chunk of data from the process
@@ -72,30 +67,47 @@ function [code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descript
 		listPtr = listPtr + 1;
 	
 	end
+	toc;
 
-	% pooling with gmp
+	tic;
 	F(:, listPtr:end) = [];   % remove unused slots
-	X = zeros(encode_dim, size(F, 2));
+
+	X_c = cell(1,256);
+	X = zeros(65536, size(F, 2));
 	for i = 1:size(F, 2),
 		cpp_handle = mexFisherEncodeHelperSP('init', codebook, fisher_params);
-		mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * F(:, i)));
-		X(:, i) = mexFisherEncodeHelperSP('getfk', cpp_handle);
+		k = mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * F(:, i)));
+		T = X_c{k};
+		s = size(T,2) + 1;
+		T(:, s) = mexFisherEncodeHelperSP('getfk', cpp_handle);
 		mexFisherEncodeHelperSP('clear', cpp_handle);
-		X(:, i) = X(:, i)/norm(X(:, i));
-		
-		%%% anh thay F(:, i) bằng số random rand(204, 1) thì kết quả X(:, i) rất sparse (số lượng phần tử khác 0 < 256)
-		%%% em debug lại chỗ này đi nhé!!
+		T(:, s) = T(:, s)/norm(T(:, s));
+		X(:, i) = T(:, s);
+		X_c{k} = T;
 	end
+	X_c = X_c(~cellfun(@isempty,X_c));
+	toc;
+	
+	tic;
+	k = X'*X;
+	toc;
 
-	alpha = solve_multiple_gmp(gmp_params.lambda, X', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);
-	for i = 1:size(alpha, 2),
-		code_gmp(:,i) = X * alpha(:,i);
+	tic;
+	ki = cell(1,256);
+	for i = 1:size(X_c,2),
+		xi = X_c{i};
+		if isempty(xi),
+			continue;
+		end
+		ki{i} = xi'*xi;
 	end
-	code_sump = sum(X,2);
-	%nowstr = datestr(now, 'yyyymmddHHMMSS');
-	%phi_sum_file = ['~/', nowstr, 'phi_sum_', '.mat'];
-	%phi_file = ['~/', nowstr, 'phi_', nowstr, '.mat'];
-	%par_save(phi_sum_file, sum(X,2), 1);
-	%par_save(phi_file, code, 1);
+	
+	kx = cell2mat(ki);
+	toc;
+
+	
+	if sum(~eq(k, kx)) == 0,
+		fprintf('Equal!');
+	end
 	popenr(p, -1);
 end

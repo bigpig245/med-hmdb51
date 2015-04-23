@@ -17,6 +17,9 @@ function [ X ] = imprv_densetraj_extract_features(video_file, descriptor)
 	cmd = [densetraj, ' ''', video_file, ''''];
 		
 	switch descriptor,
+		case 'imprvtraj'
+			start_idx = 11;
+			end_idx = 40;
 		case 'hoghof'
 			start_idx = 41;
 			end_idx = 244;
@@ -27,14 +30,14 @@ function [ X ] = imprv_densetraj_extract_features(video_file, descriptor)
 			start_idx = 41;
 			end_idx = 436;
 		case 'full'
-			start_idx = 1;
+			start_idx = 11;
 			end_idx = 436;
 		otherwise
 			error('Unknown descriptor for dense trajectories!!\n');
 	end
 	
 	feat_dim = end_idx - start_idx + 1;
-	full_dim = 436;	% default of dense trajectories 7 + 30 + 96 + 108 + 192
+	full_dim = 436;	% default of dense trajectories 10 + 30 + 96 + 108 + 192
 	
 	% open pipe
 	p = popenr(cmd);
