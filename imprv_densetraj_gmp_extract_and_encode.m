@@ -6,7 +6,7 @@ function [code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descript
 	logfile = sprintf('%s/%s.log', configs.logdir, mfilename);
 	change_perm(logfile);
 	
-	densetraj = 'LD_PRELOAD=/home/ntrang/usr.local/lib/libstdc++.so /home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
+	densetraj = '/home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
 	
 	%% fisher initialization
 	fisher_params.grad_weights = false;		% "soft" BOW
