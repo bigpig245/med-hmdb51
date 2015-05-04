@@ -102,7 +102,7 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	
 	fprintf(' [%d] Extracting & Encoding for [%s]\n', index, video_name);
 	
-	[code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode(descriptor, kernel, video_file, codebook, low_proj); %important
+	[code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode_with_blocks(descriptor, kernel, video_file, codebook, low_proj); %important
 	
 	% power normalization (with alpha = 0.5)
 	lambda = 1;
@@ -118,7 +118,7 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 
 	elapsed = toc;
 	elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');
-	msg = sprintf('Finish running %s. Elapsed time: %s\n', video_name, elapsed_str);
+	msg = sprintf('%d, Finish running %s. Elapsed time: %s\n', index, video_name, elapsed_str);
 	fprintf(msg);
 	logmsg(logfile, msg);
 end

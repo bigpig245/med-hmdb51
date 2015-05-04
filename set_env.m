@@ -28,7 +28,7 @@ addpath('/home/ntrang/project/tools/rastamat');
 
 % lib gmm-fisher
 % addpath('/net/per900a/raid0/plsang/tools/gmm-fisher-kaori/matlab');
-addpath('/home/ntrang/project/tools/gmm-fisher/matlab');
+addpath('/home/ntrang/project/tools/mod-gmm-fisher/matlab');
 
 % gist descriptor
 % addpath('/net/per900a/raid0/plsang/software/gistdescriptor');
