@@ -51,13 +51,16 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 
 	feature_ext_fc = sprintf('imprvdensetraj.%s.%s.cb%d.fc', descriptor, kernel, codebook_gmm_size);
 	feature_ext_sum = sprintf('imprvdensetraj.%s.%s.cb%d.fc', descriptor, 'sump', codebook_gmm_size);
+	feature_ext_max = sprintf('imprvdensetraj.%s.%s.cb%d.fc', descriptor, 'maxp', codebook_gmm_size);
 	if dimred > 0,
 		feature_ext_fc = sprintf('imprvdensetraj.%s.%s.cb%d.fc.pca', descriptor, kernel, codebook_gmm_size);
 		feature_ext_sum = sprintf('imprvdensetraj.%s.%s.cb%d.fc.pca', descriptor, 'sump', codebook_gmm_size);
+		feature_ext_max = sprintf('imprvdensetraj.%s.%s.cb%d.fc.pca', descriptor, 'maxp', codebook_gmm_size);
 	end
 
 	output_dir_fc = sprintf('%s/%s', fea_dir, feature_ext_fc);
 	output_dir_sum = sprintf('%s/%s', fea_dir, feature_ext_sum);
+	output_dir_max = sprintf('%s/%s', fea_dir, feature_ext_max);
 	
 	if ~exist(output_dir_fc, 'file'),
 		mkdir(output_dir_fc);
@@ -78,7 +81,8 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	low_proj_ = load(low_proj_file, 'low_proj');
 	low_proj = low_proj_.low_proj;
 	
-	samples = [48,18,44,51,46,45,21,9,33,7];
+	%samples = [48,18,44,51,46,45,21,9,33,7];
+	samples = [1:51];
 	%for i = index:length(metadata.videos),
 	event_name = metadata.events{index};
 	video_name = metadata.videos{index};
@@ -89,6 +93,8 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	output_file = sprintf('%s.%d/%s/%s.mat', output_dir_fc, 10, event_name, video_name);
 
 	output_sum_file = sprintf('%s/%s/%s.mat', output_dir_sum, event_name, video_name);
+
+	output_max_file = sprintf('%s/%s/%s.mat', output_dir_max, event_name, video_name);
 	
 	if exist(output_file, 'file'),
 		fprintf('File [%s] already exist. Skipped!!\n', output_file);
@@ -102,7 +108,7 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 	
 	fprintf(' [%d] Extracting & Encoding for [%s]\n', index, video_name);
 	
-	[code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode_with_blocks(descriptor, kernel, video_file, codebook, low_proj); %important
+	[code_gmp, code_sump, code_maxp] = imprv_densetraj_gmp_extract_and_encode_with_blocks(descriptor, kernel, video_file, codebook, low_proj); %important
 	
 	% power normalization (with alpha = 0.5)
 	lambda = 1;
@@ -115,6 +121,9 @@ function imprv_densetraj_encode_gmp_index(descriptor, kernel, index)
 
 	code = sign(code_sump) .* sqrt(abs(code_sump));
 	par_save(output_sum_file, code, 1); 
+
+	code = sign(code_maxp) .* sqrt(abs(code_maxp));
+	par_save(output_max_file, code, 1);
 
 	elapsed = toc;
 	elapsed_str = datestr(datenum(0,0,0,0,0,elapsed),'HH:MM:SS');

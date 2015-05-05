@@ -1,4 +1,4 @@
-function [code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode_with_blocks(descriptor, kernel, video_file, codebook, low_proj)
+function [code_gmp, code_sump, code_maxp] = imprv_densetraj_gmp_extract_and_encode_with_blocks(descriptor, kernel, video_file, codebook, low_proj)
 	
 	set_env;
 
@@ -92,5 +92,6 @@ function [code_gmp, code_sump] = imprv_densetraj_gmp_extract_and_encode_with_blo
 		code_gmp(:,i) = X * alpha(:,i);
 	end
 	code_sump = sum(X,2);
+	code_maxp = max(X,[],2);
 	popenr(p, -1);
 end
