@@ -43,6 +43,7 @@ function [ output_args ] = imprv_densetraj_encode_sge(descriptor)
 	metadata = metadata.metadata;
 	
 	codebook_gmm_size = 256; %cluster_count
+	isGMP = '0';
 	
 	if strcmp(isGMP, '0'),
 		feature_ext_fc = sprintf('imprvdensetraj.%s.cb%d.fc', descriptor, codebook_gmm_size);
@@ -88,7 +89,7 @@ function [ output_args ] = imprv_densetraj_encode_sge(descriptor)
 		
 		if exist(output_file, 'file'),
 			fprintf('File [%s] already exist. Skipped!!\n', output_file);
-			%continue;
+			continue;
 		end
 		
 		fprintf(' [%d] Extracting & Encoding for [%s]\n', i, video_name);

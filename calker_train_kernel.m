@@ -37,7 +37,8 @@ function calker_train_kernel(ker, start_split, end_split, start_class, end_class
 	dist_Path = sprintf('%s.distmatrix.%s.mat', kerPath, ker.type);
 	fprintf('--- Loading dist matrix...\n');
 	kernels_ = load(dist_Path);
-	samples = [48,18,44,51,46,45,21,9,33,7];
+	%samples = [48,18,44,51,46,45,21,9,33,7];
+	samples = [1:51];
 	
 	for ss=start_split:end_split,
 		

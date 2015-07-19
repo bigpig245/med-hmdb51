@@ -41,8 +41,8 @@ function calker_create_result(feature_ext, feat_dim, feat_norm, ker_type, suffix
 	
 	load(scorePath, 'scores');
 
-	samples = [48,18,44,51,46,45,21,9,33,7];
-
+	%samples = [48,18,44,51,46,45,21,9,33,7];
+	samples = [1:51];
 	n_class = metadata.numclass;
 	
 	results = struct;

@@ -27,7 +27,8 @@ function calker_cal_acc(ker)
 		error('File not found!! %s \n', scorePath);
 	end
 	
-	samples = [48,18,44,51,46,45,21,9,33,7];
+	%samples = [48,18,44,51,46,45,21,9,33,7];
+	samples = [1:51];
 
 	load(scorePath, 'scores');
 

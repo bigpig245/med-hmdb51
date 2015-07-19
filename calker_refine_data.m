@@ -17,13 +17,19 @@ num_video_all_zero = 0;
 for ii = 1:length(videos), %
 	event_name = metadata.events{ii};
 	video_name = videos{ii};
-	segment_path = sprintf('%s/%s/%s/%s.mat', fea_dir, 'idensetraj.mbh.cb256.fc.pca', event_name, video_name);
+	segment_path = sprintf('%s/%s/%s/%s.mat', fea_dir, 'sift.dsift.linear.cb256.fc.pca.10', event_name, video_name);
 	
 	if ~exist(segment_path),
-		warning('File [%s] does not exist!\n', segment_path);
+		warning('File [%d] does not exist!\n', ii);
+		continue;
 	else
-		code = load(segment_path, 'code');
-		code = code.code;
+		try
+			code = load(segment_path, 'code');
+			code = code.code;
+		catch
+			warning('File error %s. Skipped !!\n', segment_path);
+			delete(segment_path);
+		end
 	end
 	
 	if any(isnan(code)),

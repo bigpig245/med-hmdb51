@@ -42,7 +42,9 @@ for i = 1:5,
 	lambda = lambda * 10;
 	nse = lambda*eye(N);
 	w(:,i) = (k + nse)\b;
-	w(:,i) = w(:,i)';%/sum(w(:,i));
+	if ~isempty(w),
+		w(:,i) = w(:,i)';%/sum(w(:,i));
+	end
 end
 
 end

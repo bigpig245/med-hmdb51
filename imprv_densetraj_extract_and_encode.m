@@ -7,7 +7,7 @@ function code = imprv_densetraj_extract_and_encode(descriptor, video_file, codeb
 	configs = set_global_config();
 	logfile = sprintf('%s/%s.log', configs.logdir, mfilename);
 		
-	densetraj = 'LD_PRELOAD=/home/ntrang/usr.local/lib/libstdc++.so /home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
+	densetraj = '/home/ntrang/project/tools/improved_trajectory_release/release/DenseTrackStab';
 	
 	%% fisher initialization
 	fisher_params.grad_weights = false;		% "soft" BOW

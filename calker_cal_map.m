@@ -27,9 +27,11 @@ function calker_cal_map(ker)
 		error('File not found!! %s \n', scorePath);
 	end
 	
-	load(scorePath, 'scores');
+	scores = load(scorePath, 'scores');
+	%scores = scores.scores;
 
-	samples = [48,18,44,51,46,45,21,9,33,7];
+	%samples = [48,18,44,51,46,45,21,9,33,7];
+	samples = [1:51];
 
 	n_class = metadata.numclass;
 	
