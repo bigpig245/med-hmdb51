@@ -1,4 +1,4 @@
-function [code_gmp, code_sump, code_maxp] = sift_gmp_extract_and_encode_with_blocks(sift_algo, kernel, event_name, video_name, codebook, low_proj)
+function [code] = sift_extract_and_encode(sift_algo, kernel, event_name, video_name, codebook, low_proj)
 	
 	set_env;
 
@@ -14,6 +14,7 @@ function [code_gmp, code_sump, code_maxp] = sift_gmp_extract_and_encode_with_blo
 	fisher_params.grad_variances = true;		% 2nd order
 	fisher_params.alpha = single(1.0);		% power normalization (set to 1 to disable)
 	fisher_params.pnorm = single(0.0);		% norm regularisation (set to 0 to disable)
+	cpp_handle = mexFisherEncodeHelperSP('init', codebook, fisher_params);
 
 	%% gmp initialization
 	%%% em fix lambda 1e^-4 đi. lamda này quá lớn (tương đương trường hợp sum-pooling như trong paper)
@@ -36,14 +37,14 @@ function [code_gmp, code_sump, code_maxp] = sift_gmp_extract_and_encode_with_blo
 	%	selected_idx = selected_idx(rand_idx(1:sample_length));
 	%end
 	
-	F= [];
+	F = [];
 	for jj = selected_idx,
 		img_name = kfs(jj).name;
 		img_path = fullfile(video_kf_dir, img_name);
 		
 		[frames, descrs] = sift_extract_features( img_path, sift_algo);
 		
-		% if more than 50% of points are empty --> possibley empty image
+		% if more than 50% of points are empty --> possibly empty image
 		count_zero_points = sum(all(descrs == 0, 1));
 		numbers_of_points = size(descrs, 2);
 		if isempty(descrs) || count_zero_points > 0.5*numbers_of_points,
@@ -51,23 +52,22 @@ function [code_gmp, code_sump, code_maxp] = sift_gmp_extract_and_encode_with_blo
 			continue;
 		end
 		
+		descrs(:, end) = [];   % remove unused slots
+		
 		cpp_handle = mexFisherEncodeHelperSP('init', codebook, fisher_params);
-		mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * descrs));
+		
+		if ~isempty(low_proj),	
+			mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * descrs));
+		else
+			mexFisherEncodeHelperSP('accumulate', cpp_handle, single(descrs));
+		end
+
 		code = mexFisherEncodeHelperSP('getfk', cpp_handle);
+
 		mexFisherEncodeHelperSP('clear', cpp_handle);
-		code = code/norm(code);
+		
 		F = [F code];
 	end
-
-	% pooling with gmp
-	encode_dim = 40960;
-	alpha = solve_multiple_gmp(gmp_params.lambda, F', gmp_params.calpha, gmp_params.sigma, gmp_params.kernel);
-	code_gmp = zeros(encode_dim, size(alpha, 2));
-	for i = 1:size(alpha, 2),
-		if ~isempty(alpha),
-			code_gmp(:,i) = F * alpha(:,i);
-		end
-	end
-	code_sump = sum(F,2);
-	code_maxp = max(F,[],2);
+		
+	code = mean(F,2);
 end

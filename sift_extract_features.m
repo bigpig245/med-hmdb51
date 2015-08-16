@@ -26,7 +26,7 @@ function [frames, descrs] = sift_extract_features( img_path, sift_algo, param )
 			if exist('param', 'var'),
 				obj.method = param;
 			else
-				obj.method = 'dog';
+				obj.method = 'hessian';
 			end
 			
 			try

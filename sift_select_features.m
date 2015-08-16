@@ -33,7 +33,7 @@ function sift_select_features(sift_algo, param)
 	output_file = sprintf('/home/ntrang/project/output/hmdb51/feature/bow.codebook.devel/%s.%s.sift/data/selected_feats_%d.mat', sift_algo, num2str(param), max_features);
 	if exist(output_file),
 		fprintf('File [%s] already exist. Skipped\n', output_file);
-		return;
+		%return;
 	end
 	
 	%parfor ii = 1:length(videos),
@@ -53,9 +53,13 @@ function sift_select_features(sift_algo, param)
 		selected_idx = [1:length(kfs)];
 		
 		% trangnt ........
-		if length(kfs) > sample_length,
-			rand_idx = randperm(length(kfs));
-			selected_idx = selected_idx(rand_idx(1:sample_length));
+		%if length(kfs) > sample_length,
+		%	rand_idx = randperm(length(kfs));
+		%	selected_idx = selected_idx(rand_idx(1:sample_length));
+		%end
+
+		if isempty(selected_idx),
+			error('File %s is empty\n', video_name);
 		end
 		
 		fprintf('Computing features for: %d - %s %f %% complete\n', ii, video_name, ii/length(videos)*100.00);
@@ -70,7 +74,7 @@ function sift_select_features(sift_algo, param)
 			count_zero_points = sum(all(descrs == 0, 1));
 			numbers_of_points = size(descrs, 2);
 			if isempty(descrs) || count_zero_points > 0.5*numbers_of_points,
-				warning('%d/%d: Maybe blank image...[%s]. Skipped!\n', count_zero_points, number_of_points, img_name);
+				warning('%d/%d: Maybe blank image...[%s]. Skipped!\n', count_zero_points, numbers_of_points, img_name);
 				continue;
 			end
 			%feat = [feat descrs];

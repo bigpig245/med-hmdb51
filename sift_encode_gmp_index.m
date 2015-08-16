@@ -5,7 +5,7 @@ function sift_encode_gmp_index(sift_algo, param, kernel, index)
 	
 	% setting
 	set_env;
-	dimred = 128;
+	dimred = 80;
 	feat_dim = 128;
 	
 	configs = set_global_config();
@@ -84,12 +84,12 @@ function sift_encode_gmp_index(sift_algo, param, kernel, index)
 	
 	if exist(output_file, 'file'),
 		fprintf('File [%s] already exist. Skipped!!\n', output_file);
-		return;
+		%return;
 	end
 	
 	if isempty(find(samples == classid)),
 		fprintf('[%s] belongs to [%s] is not in samples, ignore!!\n', video_name, event_name);
-		return;
+		%return;
 	end
 	
 	fprintf(' [%d] Extracting & Encoding for [%s]\n', index, video_name);
