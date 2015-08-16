@@ -55,7 +55,7 @@ function [code_gmp, code_sump, code_maxp] = sift_gmp_extract_and_encode_with_blo
 		mexFisherEncodeHelperSP('accumulate', cpp_handle, single(low_proj * descrs));
 		code = mexFisherEncodeHelperSP('getfk', cpp_handle);
 		mexFisherEncodeHelperSP('clear', cpp_handle);
-		code = code/norm(code);
+		code = sign(code) .* sqrt(abs(code));
 		F = [F code];
 	end
 

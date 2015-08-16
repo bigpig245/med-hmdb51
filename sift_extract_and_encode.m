@@ -65,6 +65,8 @@ function [code] = sift_extract_and_encode(sift_algo, kernel, event_name, video_n
 		code = mexFisherEncodeHelperSP('getfk', cpp_handle);
 
 		mexFisherEncodeHelperSP('clear', cpp_handle);
+
+		code = sign(code) .* sqrt(abs(code));
 		
 		F = [F code];
 	end
